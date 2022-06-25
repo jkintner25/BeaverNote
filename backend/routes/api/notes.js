@@ -18,10 +18,13 @@ router.post(
 
 //get all notes
 router.get(
-    '/',
+    '/notebooks/:notebookId',
     requireAuth,
     asyncHandler(async (req, res) => {
-        const notes = await Note.findAll();
+        const notebookId = req.params.notebookId;
+        const notes = await Note.findAll({
+            where: { notebookId }
+        });
         return res.json(notes);
     })
 );

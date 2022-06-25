@@ -18,7 +18,7 @@ router.post(
 
 //get all notebooks of user
 router.get(
-    '/:userId',
+    '/user/:userId',
     requireAuth,
     asyncHandler(async (res) => {
         const userId = req.params.userId;

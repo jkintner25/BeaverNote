@@ -16,12 +16,15 @@ router.post(
     })
 );
 
-//get all notebooks
+//get all notebooks of user
 router.get(
-    '/',
+    '/:userId',
     requireAuth,
     asyncHandler(async (res) => {
-        const notes = await Notebook.findAll();
+        const userId = req.params.userId;
+        const notes = await Notebook.findAll({
+            where: { userId }
+        });
         return res.json(notes);
     })
 );

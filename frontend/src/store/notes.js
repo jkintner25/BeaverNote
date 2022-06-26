@@ -31,8 +31,8 @@ export const createNote = (payload) => async dispatch => {
     dispatch(add(note));
 };
 
-export const loadNotes = (notebookId) => async dispatch => {
-    const response = await csrfFetch(`/api/notes/notebooks/${notebookId}`);
+export const loadNote = (noteId) => async dispatch => {
+    const response = await csrfFetch(`/api/notes/${noteId}`);
     if (response.ok) {
         const notes = await response.json();
         dispatch(load(notes))

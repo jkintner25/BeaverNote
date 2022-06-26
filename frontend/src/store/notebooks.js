@@ -64,7 +64,6 @@ export const deleteNotebook = (id) => async dispatch => {
 };
 
 const initialState = {
-    titles: []
 }
 
 const notebooksReducer = (state = initialState, action) => {
@@ -73,9 +72,8 @@ const notebooksReducer = (state = initialState, action) => {
         case ADD_NOTEBOOK:
             return { ...state, [action.notebook.id]: action.notebook };
         case GET_NOTEBOOKS:
-            newState = action.notebooks.forEach(notebook => {
+            action.notebooks.forEach(notebook => {
                 newState[notebook.id] = notebook;
-                action.notebooks.titles.push(notebook.title);
             });
             return newState;
         case UPDATE_NOTEBOOK:

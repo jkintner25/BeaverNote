@@ -6,19 +6,25 @@ import Notebook from './Notebook';
 
 function Sidebar() {
     const dispatch = useDispatch();
-    const [notebooks, setNotebooks] = useState([])
     const userId = useSelector(state => state.session?.user?.id)
+    const notebooks = useSelector(state => state.notebooks)
+
+    console.log(notebooks)
 
     useEffect(() => {
-        if(!userId) return;
+        if (!userId) return;
         dispatch(getAllNotebooks(userId))
     }, [dispatch, userId])
+
+    useEffect(() => {
+
+    })
 
     return (
         <div>
             <h3>My NoteBooks</h3>
             <ul>
-                {}
+                { }
                 <li>
                     <Notebook />
                 </li>

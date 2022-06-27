@@ -27,7 +27,6 @@ router.get(
             where: { userId: userId },
             include: ['notes']
         });
-        // console.log("NOTES:::::::::::::: ", notebooks[0].notes)
         return res.json(notebooks);
     })
 );

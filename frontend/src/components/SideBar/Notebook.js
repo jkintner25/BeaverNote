@@ -1,13 +1,27 @@
 import Note from "./Note";
+import { useState } from 'react';
 
+function Notebook({ notebook }) {
+    const [showNotes, setShowNotes] = useState(false)
 
-function Notebook() {
+    const toggleNotes = () => {
+        setShowNotes(!showNotes)
+    }
 
     return (
-        <div>
-            <h3>Notebook One</h3>
-            <Note />
-        </div>
+        <>
+            <li name={notebook.title}
+                onClick={toggleNotes}>
+                {notebook.title}
+            </li>
+            <ul>
+                {showNotes && Object.values(notebook.notes).map(note => {
+                    return (
+                        <Note key={note.id} note={note} />
+                    )
+                })}
+            </ul>
+        </>
     );
 };
 

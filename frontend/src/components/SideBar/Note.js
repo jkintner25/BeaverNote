@@ -1,13 +1,9 @@
 
-function Note() {
+function Note({ note }) {
 
 
     return (
-        <div>
-            <ul>
-                <li>Note One</li>
-            </ul>
-        </div>
+        <li>{note.title}</li>
     );
 };
 

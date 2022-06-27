@@ -2,7 +2,8 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth')
 
-const { Notebook } = require('../../db/models');
+const { Notebook, Note } = require('../../db/models');
+// const notebook = require('../../db/models/notebook');
 
 const router = express.Router();
 
@@ -18,14 +19,15 @@ router.post(
 
 //get all notebooks of user
 router.get(
-    '/:userId',
+    '/user/:userId',
     requireAuth,
-    asyncHandler(async (res) => {
-        const userId = req.params.userId;
-        const notes = await Notebook.findAll({
-            where: { userId }
+    asyncHandler(async (req, res) => {
+        const {userId} = req.params;
+        const notebooks = await Notebook.findAll({
+            where: { userId: userId },
+            include: ['notes']
         });
-        return res.json(notes);
+        return res.json(notebooks);
     })
 );
 

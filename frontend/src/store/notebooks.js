@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf";
+import notesReducer from "./notes";
 
 //types
 const ADD_NOTEBOOK = "notebooks/ADD_NOTEBOOK";
@@ -38,7 +39,7 @@ export const addOneNotebook = (payload) => async dispatch => {
 };
 
 export const getAllNotebooks = (userId) => async dispatch => {
-    const response = await csrfFetch(`/api/notebooks/${userId}`,);
+    const response = await csrfFetch(`/api/notebooks/user/${userId}`,);
     if (response.ok) {
         const notebooks = await response.json();
         dispatch(load(notebooks));
@@ -62,15 +63,16 @@ export const deleteNotebook = (id) => async dispatch => {
     dispatch(remove(notebook));
 };
 
-const initialState = { notes: null }
+const initialState = {
+}
 
 const notebooksReducer = (state = initialState, action) => {
-    const newState = {}
+    let newState = {}
     switch (action.type) {
         case ADD_NOTEBOOK:
             return { ...state, [action.notebook.id]: action.notebook };
         case GET_NOTEBOOKS:
-            newState = action.notebooks.forEach(notebook => {
+            action.notebooks.forEach(notebook => {
                 newState[notebook.id] = notebook;
             });
             return newState;

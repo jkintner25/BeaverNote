@@ -16,16 +16,6 @@ router.post(
     })
 );
 
-//get all notes
-router.get(
-    '/',
-    requireAuth,
-    asyncHandler(async (req, res) => {
-        const notes = await Note.findAll();
-        return res.json(notes);
-    })
-);
-
 //get one note by id
 router.get(
     '/:id',

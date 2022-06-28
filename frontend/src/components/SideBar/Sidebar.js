@@ -1,19 +1,7 @@
-import React, { useEffect, useState, createContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotebooks } from '../../store/notebooks';
 import Notebook from './Notebook';
-
-// export const SidebarContext = createContext()
-
-// export const SidebarProvider = (props) => {
-//     const [tripwire, setTripwire] = useState(false)
-
-//     return (
-//         <SidebarContext.Provider value={{tripwire, setTripwire}}>
-//             {props.children}
-//         </SidebarContext.Provider>
-//     );
-// }
 
 function Sidebar() {
     const dispatch = useDispatch();

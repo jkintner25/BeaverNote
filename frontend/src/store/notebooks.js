@@ -98,16 +98,12 @@ const notebooksReducer = (state = initialState, action) => {
             newState[action.note.notebookId] = {...state[action.note.notebookId], notes: [...state[action.note.notebookId].notes, action.note]}
             return newState;
         case DELETE_NOTE:
-            newState = { ...state[action.note.notebookId], notes:[...state[action.note.notebookId]]}
-            console.log(newState)
-            // delete newState[action.note.notebookId].notes[action.note.id]
-            console.log(newState)
+            newState = { ...state }
+            // delete newState[notebooks[action.note.notebookId].notes[action.note.id]]
             return newState;
         case GET_NOTEBOOKS:
-            console.log('THIS IS THE AAACCTTIIIOOONN: ', action)
             action.notebooks.forEach(notebook => {
                 newState[notebook.id] = notebook;
-                console.log('ACTION.NOTEBOOKS', action.notebooks[notebook.id])
                 newState[notebook.id].notes = {}
                 newState[notebook.id].Notes.forEach(note=>{
                     newState[notebook.id].notes[note.id] = note;

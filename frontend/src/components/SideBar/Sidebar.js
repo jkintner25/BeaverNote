@@ -24,7 +24,6 @@ function Sidebar() {
     useEffect(() => {
         if (!userId) return;
         dispatch(getAllNotebooks(userId))
-        console.log(notebooks)
     }, [dispatch, userId, notebooks])
 
     useEffect(()=>{

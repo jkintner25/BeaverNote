@@ -8,6 +8,8 @@ function Notebook({ notebook }) {
 
     const toggleNotes = () => {
         setShowNotes(!showNotes)
+        // const [thisNote] = notebook.notes.filter(note=>note.id === 17)
+        // console.log(thisNote)
     }
 
     useEffect(()=>{

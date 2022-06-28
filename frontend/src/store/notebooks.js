@@ -54,6 +54,7 @@ export const getAllNotebooks = (userId) => async dispatch => {
     const response = await csrfFetch(`/api/notebooks/user/${userId}`,);
     if (response.ok) {
         const notebooks = await response.json();
+        // console.log('HHHHHHHEEEEEEEEERRRRRRRRREEEEEEEE: ', notebooks)
         dispatch(load(notebooks));
     };
 };
@@ -80,7 +81,7 @@ export const deleteNoteInDB = (id) => async dispatch => {
         method: "DELETE",
     })
     const note = await response.json();
-    // dispatch(deleteNote(note));
+    dispatch(deleteNote(note));
 }
 
 const initialState = {
@@ -99,10 +100,18 @@ const notebooksReducer = (state = initialState, action) => {
         case DELETE_NOTE:
             newState = { ...state[action.note.notebookId], notes:[...state[action.note.notebookId]]}
             console.log(newState)
+            // delete newState[action.note.notebookId].notes[action.note.id]
+            console.log(newState)
             return newState;
         case GET_NOTEBOOKS:
+            console.log('THIS IS THE AAACCTTIIIOOONN: ', action)
             action.notebooks.forEach(notebook => {
                 newState[notebook.id] = notebook;
+                console.log('ACTION.NOTEBOOKS', action.notebooks[notebook.id])
+                newState[notebook.id].notes = {}
+                newState[notebook.id].Notes.forEach(note=>{
+                    newState[notebook.id].notes[note.id] = note;
+                })
             });
             // newState[action.notebook.id].notes.forEach(
             return newState;

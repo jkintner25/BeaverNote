@@ -29,6 +29,7 @@ export const createNote = (payload) => async dispatch => {
     });
     const note = await response.json();
     dispatch(add(note));
+    return note;
 };
 
 export const loadNote = (noteId) => async dispatch => {

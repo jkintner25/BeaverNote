@@ -1,4 +1,5 @@
 import Note from "./Note";
+import { React } from "react";
 import { useState } from 'react';
 
 function Notebook({ notebook }) {

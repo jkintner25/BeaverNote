@@ -32,10 +32,6 @@ function NoteForm() {
         dispatch(getAllNotebooks(userId))
     }, [dispatch, userId])
 
-    useEffect(()=>{
-        console.log(selectedNotebook)
-    }, [selectedNotebook])
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -52,7 +48,6 @@ function NoteForm() {
             notebookId: selectedNotebook
         };
 
-        console.log(newNote)
         dispatch(createNote(newNote)).then((note)=>dispatch(addNote(note))).then(reset)
     }
 

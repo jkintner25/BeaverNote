@@ -1,0 +1,9 @@
+.sidebar-note-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.notebook-title-div {
+    display: flex;
+    flex-direction: row;
+}

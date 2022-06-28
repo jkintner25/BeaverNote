@@ -1,8 +1,7 @@
-import { useEffect, React } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotebooks } from '../../store/notebooks';
 import Notebook from './Notebook';
-
 
 function Sidebar() {
     const dispatch = useDispatch();

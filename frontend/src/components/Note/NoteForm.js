@@ -1,19 +1,18 @@
 import "./Note.css"
 import { React, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { addNote, getAllNotebooks } from "../../store/notebooks";
 import { createNote } from "../../store/notes";
 
 function NoteForm() {
     const dispatch = useDispatch();
-    const history = useHistory();
     const userId = useSelector(state => state.session?.user?.id)
     const userNotebooks = useSelector(state => state.notebooks && Object.values(state?.notebooks))
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedNotebook, setSelectedNotebook] = useState(null);
     const [validationErrors, setValidationErrors] = useState([])
+    const [showForm, setShowForm] = useState(false)
 
     useEffect(()=>{
         if(!userNotebooks[0] || !(selectedNotebook === null))return;
@@ -36,8 +35,8 @@ function NoteForm() {
         e.preventDefault();
 
         let errors = []
-        if (title.length < 3) errors.push('You need a title!')
-        if (!content) errors.push('You need content to save this note!')
+        if (title.length < 3 || title.length > 30) errors.push('Title must be between 3-30 characters!')
+        if (content.length < 1) errors.push('You need more than one character to save this note!')
         if (!selectedNotebook) errors.push('Select a notebook!')
         if (errors.length > 0) return setValidationErrors(errors)
 
@@ -53,6 +52,8 @@ function NoteForm() {
 
     return (
         <div>
+            <button onClick={()=>setShowForm(!showForm)}>Create a new note!</button>
+            {showForm && <>
             {validationErrors && validationErrors.map(error=>{
                 return <li key={error}>{error}</li>
             })}
@@ -62,12 +63,12 @@ function NoteForm() {
                         value={title}
                         placeholder={'Note Title'}
                         onChange={(e) => setTitle(e.target.value)}
-                    ></input>
+                        ></input>
                     <input type={'text'}
                         value={content}
                         placeholder={'Note Content'}
                         onChange={(e) => setContent(e.target.value)}
-                    ></input>
+                        ></input>
                     <select className="notebook-selector"
                     onChange={(e)=>setSelectedNotebook(e.target.value)}>
                         {userNotebooks && userNotebooks.map(notebook=>{
@@ -80,9 +81,10 @@ function NoteForm() {
                     </select>
                     <button type={'submit'}
                         disabled={!title || !content}
-                    >Save this note</button>
+                        >Save this note</button>
                 </div>
             </form>
+            </>}
         </div>
     );
 }

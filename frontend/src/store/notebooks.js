@@ -1,5 +1,4 @@
 import { csrfFetch } from "./csrf";
-import notesReducer from "./notes";
 
 //types
 const ADD_NOTEBOOK = "notebooks/ADD_NOTEBOOK";

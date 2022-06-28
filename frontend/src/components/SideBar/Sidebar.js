@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotebooks } from '../../store/notebooks';
 import Notebook from './Notebook';
 
 function Sidebar() {
     const dispatch = useDispatch();
+    const [tripwire, setTripwire] = useState(false)
+    const currentNote = useSelector(state => state.notes && state.notes)
 
     const userId = useSelector(state => state.session?.user?.id)
     const notebooks = useSelector(state => state.notebooks && Object.values(state.notebooks))
@@ -15,7 +17,8 @@ function Sidebar() {
     }, [dispatch, userId])
 
     useEffect(()=>{
-    }, [notebooks])
+        setTripwire(false)
+    }, [notebooks, currentNote])
 
     return (
         <div>

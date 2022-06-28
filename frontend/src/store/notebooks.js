@@ -6,6 +6,7 @@ const ADD_NOTEBOOK = "notebooks/ADD_NOTEBOOK";
 const GET_NOTEBOOKS = "notebooks/GET_NOTEBOOKS";
 const UPDATE_NOTEBOOK = "notebooks/UPDATE_NOTEBOOK";
 const REMOVE_NOTEBOOK = "notebooks/REMOVE_NOTEBOOK";
+const ADD_NOTE = "notebooks/ADD_NOTE";
 
 //actions
 const add = (notebook) => ({
@@ -27,6 +28,11 @@ const remove = (notebook) => ({
     type: REMOVE_NOTEBOOK,
     notebook
 });
+
+export const addNote = (note) => ({
+    type: ADD_NOTE,
+    note
+})
 
 //thunk middleware
 export const addOneNotebook = (payload) => async dispatch => {
@@ -71,6 +77,10 @@ const notebooksReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NOTEBOOK:
             return { ...state, [action.notebook.id]: action.notebook };
+        case ADD_NOTE:
+            newState = { ...state }
+            newState[action.note.notebookId] = {...state[action.note.notebookId], notes: [...state[action.note.notebookId].notes, action.note]}
+            return newState;
         case GET_NOTEBOOKS:
             action.notebooks.forEach(notebook => {
                 newState[notebook.id] = notebook;

@@ -15,7 +15,8 @@ function LoginForm() {
         setErrors([]);
         dispatch(sessionActions.login({ credential, password })).then(
             (data) => {
-                if (data.user) history.push('/home')
+                if (data.user)
+                return history.push('/home')
             }
         ).catch(
             async (res) => {
@@ -23,6 +24,7 @@ function LoginForm() {
                 if (data && data.errors) setErrors(data.errors);
             }
         );
+        // return history.push("/home")
     };
 
     return (

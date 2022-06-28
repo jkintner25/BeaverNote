@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, React } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotebooks } from '../../store/notebooks';
 import Notebook from './Notebook';
@@ -9,11 +9,15 @@ function Sidebar() {
 
     const userId = useSelector(state => state.session?.user?.id)
     const notebooks = useSelector(state => state.notebooks && Object.values(state.notebooks))
+    const notes = useSelector(state => state.notes)
 
     useEffect(() => {
         if (!userId) return;
         dispatch(getAllNotebooks(userId))
     }, [dispatch, userId])
+
+    useEffect(()=>{
+    }, [notes])
 
     return (
         <div>

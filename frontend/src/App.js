@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Sidebar from "./components/SideBar/Sidebar";
 import NoteForm from "./components/Note/NoteForm";
+import NoteView from "./components/Note/NoteView";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
           <Route path="/home">
             <Sidebar />
             <NoteForm />
+            <NoteView />
           </Route>
         </Switch>
       )}

@@ -5,12 +5,14 @@ import { addNote } from "../../store/notes";
 import "./sidebar.css"
 
 function Note({ note, showDeleteBtn }) {
+    const [thisNote, setThisNote] = useState({})
     const dispatch = useDispatch();
-
-    const notebooks = useSelector(state=> state.notebooks)
+    const notebooks = useSelector(state => state.notebooks)
+    const currentNote = useSelector(state => state.notes)
 
     useEffect(()=>{
-    }, [notebooks])
+        setThisNote(currentNote)
+    }, [notebooks, currentNote])
 
     const showNote = (note) => {
         dispatch(addNote(note))

@@ -12,6 +12,8 @@ function Notebook({ notebook }) {
     const toggleNotes = () => {
         setShowNotes(!showNotes)
     }
+    useEffect(()=>{
+    }, [notebooksStore])
 
     useEffect(()=>{
         if(!showNotes)return;

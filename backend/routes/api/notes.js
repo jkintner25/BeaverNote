@@ -47,7 +47,7 @@ router.delete(
         const id = req.params.id;
         const note = await Note.findByPk(id);
         note ? await note.destroy() : console.log("Note not found!");
-        return note;
+        return res.json(note);
     })
 );
 

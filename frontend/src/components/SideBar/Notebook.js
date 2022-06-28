@@ -1,15 +1,16 @@
 import Note from "./Note";
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import "./sidebar.css"
 
 function Notebook({ notebook }) {
     const [showNotes, setShowNotes] = useState(false)
     const [showDeleteBtn, setShowDeleteBtn] = useState(false)
 
+    const notebooksStore = useSelector(state=>state.notebooks)
+
     const toggleNotes = () => {
         setShowNotes(!showNotes)
-        // const [thisNote] = notebook.notes.filter(note=>note.id === 17)
-        // console.log(thisNote)
     }
 
     useEffect(()=>{

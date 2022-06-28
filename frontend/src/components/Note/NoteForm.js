@@ -18,7 +18,7 @@ function NoteForm() {
     useEffect(()=>{
         if(!userNotebooks[0] || !(selectedNotebook === null))return;
         setSelectedNotebook(Number(userNotebooks[0].id))
-    }, [userNotebooks])
+    }, [userNotebooks, selectedNotebook])
 
     const reset = () => {
         setTitle('');

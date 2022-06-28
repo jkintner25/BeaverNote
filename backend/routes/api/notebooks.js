@@ -1,10 +1,8 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth')
-const Sequelize = require('sequelize')
-const Op = Sequelize.Op
 
-const { Notebook, Note, sequelize } = require('../../db/models');
+const { Notebook, Note } = require('../../db/models');
 // const notebook = require('../../db/models/notebook');
 
 const router = express.Router();

@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import Sidebar from "./components/SideBar/SideBar";
+import Sidebar from "./components/SideBar/Sidebar";
 import NoteForm from "./components/Note/NoteForm";
 
 function App() {
@@ -13,9 +13,6 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
-  const notes = useSelector(state => state.notes)
-  console.log(notes)
 
   return (
     <>

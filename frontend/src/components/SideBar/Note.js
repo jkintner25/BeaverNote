@@ -1,11 +1,16 @@
-import  React, { useState, useContext } from "react";
-import { useDispatch } from "react-redux"
+import  React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import { deleteNoteInDB } from "../../store/notebooks";
 import "./sidebar.css"
 
 function Note({ note, showDeleteBtn }) {
     const dispatch = useDispatch();
-    
+
+    const notebooks = useSelector(state=> state.notebooks)
+
+    useEffect(()=>{
+    }, [notebooks])
+
     const deleteThisNote = (id) => {
         dispatch(deleteNoteInDB(id));
     }

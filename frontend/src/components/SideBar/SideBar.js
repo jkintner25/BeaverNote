@@ -9,7 +9,6 @@ function Sidebar() {
 
     const userId = useSelector(state => state.session?.user?.id)
     const notebooks = useSelector(state => state.notebooks && Object.values(state.notebooks))
-    const notes = useSelector(state => state.notes)
 
     useEffect(() => {
         if (!userId) return;
@@ -17,7 +16,7 @@ function Sidebar() {
     }, [dispatch, userId])
 
     useEffect(()=>{
-    }, [notes])
+    }, [notebooks])
 
     return (
         <div>

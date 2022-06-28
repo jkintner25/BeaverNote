@@ -1,10 +1,17 @@
-import { React } from "react";
+import  React, { useState } from "react";
+import "./sidebar.css"
 
-function Note({ note }) {
+function Note({ note, showDeleteBtn }) {
+    
+    const deleteNote = () => {
 
+    }
 
     return (
-        <li>{note.title}</li>
+        <div className="sidebar-note-div">
+            {showDeleteBtn && <button onClick={deleteNote}>Delete</button>}
+            <li>{note.title}</li>
+        </div>
     );
 };
 

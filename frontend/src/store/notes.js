@@ -27,8 +27,11 @@ export const createNote = (payload) => async dispatch => {
         method: "POST",
         body: JSON.stringify(payload)
     });
-    const note = await response.json();
-    dispatch(add(note));
+    if(response.ok){
+        const note = await response.json();
+        dispatch(add(note));
+        return note;
+    }
 };
 
 export const loadNote = (noteId) => async dispatch => {

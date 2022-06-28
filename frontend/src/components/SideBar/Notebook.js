@@ -1,23 +1,35 @@
 import Note from "./Note";
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import "./sidebar.css"
 
 function Notebook({ notebook }) {
     const [showNotes, setShowNotes] = useState(false)
+    const [showDeleteBtn, setShowDeleteBtn] = useState(false)
 
     const toggleNotes = () => {
         setShowNotes(!showNotes)
+        // const [thisNote] = notebook.notes.filter(note=>note.id === 17)
+        // console.log(thisNote)
     }
+
+    useEffect(()=>{
+        if(!showNotes)return;
+        setShowDeleteBtn(false)
+    }, [showNotes])
 
     return (
         <>
-            <li name={notebook.title}
-                onClick={toggleNotes}>
-                {notebook.title}
-            </li>
+            <div className="notebook-title-div">
+                {showNotes && <button onClick={() => setShowDeleteBtn(!showDeleteBtn)}>Edit</button>}
+                <li className="notebook-title-li"
+                    onClick={toggleNotes}>
+                    {notebook.title}
+                </li>
+            </div>
             <ul>
                 {showNotes && Object.values(notebook.notes).map(note => {
                     return (
-                        <Note key={note.id} note={note} />
+                        <Note key={note.id} note={note} showDeleteBtn={showDeleteBtn} />
                     )
                 })}
             </ul>

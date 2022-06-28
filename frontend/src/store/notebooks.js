@@ -6,6 +6,8 @@ const ADD_NOTEBOOK = "notebooks/ADD_NOTEBOOK";
 const GET_NOTEBOOKS = "notebooks/GET_NOTEBOOKS";
 const UPDATE_NOTEBOOK = "notebooks/UPDATE_NOTEBOOK";
 const REMOVE_NOTEBOOK = "notebooks/REMOVE_NOTEBOOK";
+const ADD_NOTE = "notebooks/ADD_NOTE";
+const DELETE_NOTE = "notebooks/DELETE_NOTE"
 
 //actions
 const add = (notebook) => ({
@@ -28,6 +30,16 @@ const remove = (notebook) => ({
     notebook
 });
 
+export const addNote = (note) => ({
+    type: ADD_NOTE,
+    note
+})
+
+export const deleteNote = (note) => ({
+    type: DELETE_NOTE,
+    note
+})
+
 //thunk middleware
 export const addOneNotebook = (payload) => async dispatch => {
     const response = await csrfFetch(`/api/notebooks`, {
@@ -42,12 +54,13 @@ export const getAllNotebooks = (userId) => async dispatch => {
     const response = await csrfFetch(`/api/notebooks/user/${userId}`,);
     if (response.ok) {
         const notebooks = await response.json();
+        // console.log('HHHHHHHEEEEEEEEERRRRRRRRREEEEEEEE: ', notebooks)
         dispatch(load(notebooks));
     };
 };
 
 export const editNotebook = (id, payload) => async dispatch => {
-    const response = await csrfFetch(`/api/edit/${id}`, {
+    const response = await csrfFetch(`/api/notebooks/edit/${id}`, {
         method: 'PATCH',
         body: JSON.stringify(payload)
     });
@@ -56,12 +69,20 @@ export const editNotebook = (id, payload) => async dispatch => {
 };
 
 export const deleteNotebook = (id) => async dispatch => {
-    const response = await csrfFetch(`/api/delete/${id}`, {
+    const response = await csrfFetch(`/api/notesbooks/delete/${id}`, {
         method: 'DELETE',
     });
     const notebook = await response.json();
     dispatch(remove(notebook));
 };
+
+export const deleteNoteInDB = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/notes/delete/${id}`, {
+        method: "DELETE",
+    })
+    const note = await response.json();
+    dispatch(deleteNote(note));
+}
 
 const initialState = {
 }
@@ -70,11 +91,25 @@ const notebooksReducer = (state = initialState, action) => {
     let newState = {}
     switch (action.type) {
         case ADD_NOTEBOOK:
-            return { ...state, [action.notebook.id]: action.notebook };
+            action.notebook.id.notes.forEach(note=>{newState[action.notebook.id].notes[note.id] = note});
+            return newState;
+        case ADD_NOTE:
+            newState = { ...state }
+            newState[action.note.notebookId] = {...state[action.note.notebookId], notes: [...state[action.note.notebookId].notes, action.note]}
+            return newState;
+        case DELETE_NOTE:
+            newState = { ...state }
+            // delete newState[notebooks[action.note.notebookId].notes[action.note.id]]
+            return newState;
         case GET_NOTEBOOKS:
             action.notebooks.forEach(notebook => {
                 newState[notebook.id] = notebook;
+                newState[notebook.id].notes = {}
+                newState[notebook.id].Notes.forEach(note=>{
+                    newState[notebook.id].notes[note.id] = note;
+                })
             });
+            // newState[action.notebook.id].notes.forEach(
             return newState;
         case UPDATE_NOTEBOOK:
             return { ...state, [action.notebook.id]: action.notebook };

@@ -58,10 +58,13 @@ router.put(
 router.delete(
     '/delete/:id',
     requireAuth,
-    asyncHandler(async (req) => {
+    asyncHandler(async (req, res) => {
         const id = req.params.id;
         const notebook = await Notebook.findByPk(id);
-        notebook ? await notebook.destroy() : console.log("Note not found!")
+        if (notebook) {
+            await notebook.destroy();
+            return res.json(notebook);
+        }
     })
 );
 

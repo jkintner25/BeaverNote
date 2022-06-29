@@ -2,18 +2,12 @@ import { csrfFetch } from "./csrf";
 
 //action types
 const ADD_NOTE = 'notes/ADD_NOTE';
-const GET_ALL_NOTES = 'notes/GET_ALL_NOTES';
 const REMOVE_NOTE = 'notes/REMOVE_NOTE';
 
 //actions
 export const addNote = (note) => ({
     type: ADD_NOTE,
     note
-});
-
-const load = (notes) => ({
-    type: GET_ALL_NOTES,
-    notes
 });
 
 export const removeThisNote = (note) => ({
@@ -33,14 +27,6 @@ export const createNote = (payload) => async dispatch => {
         dispatch(addNote(note));
         return note;
     }
-};
-
-export const loadNote = (noteId) => async dispatch => {
-    const response = await csrfFetch(`/api/notes/${noteId}`);
-    if (response.ok) {
-        const notes = await response.json();
-        dispatch(load(notes))
-    };
 };
 
 export const updateNote = (id, editedNote) => async dispatch => {

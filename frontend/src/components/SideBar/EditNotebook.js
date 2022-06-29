@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { editNotebook } from '../../store/notebooks';
+import { deleteNotebook, editNotebook } from '../../store/notebooks';
+import { removeThisNote } from '../../store/notes';
 import "./sidebar.css"
 
 function EditNotebook({ notebook, userId }) {
     const dispatch = useDispatch();
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState(notebook.title);
+
+    const thisNote = useSelector(state => state.notes && state.notes)
 
     const toggleMode = () => {
         setEditMode(!editMode)
@@ -20,12 +23,13 @@ function EditNotebook({ notebook, userId }) {
         };
 
         dispatch(editNotebook(notebook.id, updatedNotebook))
-        .then(()=>toggleMode());
+            .then(() => toggleMode());
 
     }
 
     const deleteThisNotebook = () => {
-        
+        const id = notebook.id;
+        dispatch(deleteNotebook(id)).then(()=>dispatch(removeThisNote(thisNote)))
     }
 
     return (
@@ -34,17 +38,17 @@ function EditNotebook({ notebook, userId }) {
                 {!editMode && <button onClick={() => toggleMode()}>Edit</button>}
                 {editMode && <button onClick={() => toggleMode()}>Cancel</button>}
                 {!editMode > 0 &&
-                        <li className="notebook-title-li">
-                            {notebook.title}
-                        </li>
-                    }
+                    <li className="notebook-title-li">
+                        {notebook.title}
+                    </li>
+                }
                 {editMode &&
                     <div className='edit-notebook-div'>
-                            <input className='edit-notebook-input'
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)} />
+                        <input className='edit-notebook-input'
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)} />
                         <button onClick={() => saveNotebookTitle()}>Save</button>
-                        <button>Delete</button>
+                        <button onClick={() => deleteThisNotebook()}>Delete</button>
                     </div>}
             </div>
         </>

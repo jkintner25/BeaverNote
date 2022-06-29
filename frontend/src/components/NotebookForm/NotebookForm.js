@@ -33,7 +33,7 @@ function NotebookForm() {
             userId: userId
         };
 
-        dispatch(addOneNotebook(newNotebook))
+        dispatch(addOneNotebook(newNotebook)).then(()=>getAllNotebooks())
         .then(reset)
     }
 

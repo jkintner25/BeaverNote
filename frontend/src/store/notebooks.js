@@ -73,7 +73,7 @@ export const editNotebook = (id, payload) => async dispatch => {
 };
 
 export const deleteNotebook = (id) => async dispatch => {
-    const response = await csrfFetch(`/api/notesbooks/delete/${id}`, {
+    const response = await csrfFetch(`/api/notebooks/delete/${id}`, {
         method: 'DELETE',
     });
     const notebook = await response.json();

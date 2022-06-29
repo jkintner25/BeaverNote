@@ -25,7 +25,7 @@ function Sidebar() {
             <h3>My NoteBooks</h3>
             {notebooks.length > 0 && <button onClick={() => setEditMode(!editMode)}>Edit Notebooks</button>}
             <ul>
-                {notebooks && !editMode && notebooks.map(notebook => (
+                {notebooks.length > 0 && !editMode && notebooks.map(notebook => (
                     <Notebook key={notebook.id} notebook={notebook} userId={userId} />
                 ))}
                 {notebooks.length > 0 && editMode && notebooks.map(notebook => (

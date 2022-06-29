@@ -16,10 +16,10 @@ function NotebookForm() {
         setShowForm(false)
     }
 
-    useEffect(() => {
-        if (!userId) return;
-        dispatch(getAllNotebooks(userId))
-    }, [dispatch, userId])
+    // useEffect(() => {
+    //     if (!userId) return;
+    //     dispatch(getAllNotebooks(userId))
+    // }, [dispatch, userId])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,8 +33,8 @@ function NotebookForm() {
             userId: userId
         };
 
-        dispatch(addOneNotebook(newNotebook)).then(()=>getAllNotebooks())
-        .then(reset)
+        dispatch(addOneNotebook(newNotebook)).then(()=>getAllNotebooks(userId))
+        .then(()=>reset())
     }
 
     return (

@@ -1,25 +1,23 @@
 import Note from "./Note";
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import "./sidebar.css"
 
 function Notebook({ notebook }) {
-    const [showNotes, setShowNotes] = useState(false)
-    const [showDeleteBtn, setShowDeleteBtn] = useState(false)
+    const dispatch = useDispatch();
+    const [showNotes, setShowNotes] = useState(false);
+    const [showDeleteBtn, setShowDeleteBtn] = useState(false);
 
-    const notebooksStore = useSelector(state=>state.notebooks)
+    console.log("NOTEBOOK RE-RENDERED")
 
     const toggleNotes = () => {
-        setShowNotes(!showNotes)
+        setShowNotes(!showNotes);
     }
 
     useEffect(()=>{
-    }, [notebooksStore])
-
-    useEffect(()=>{
         if(!showNotes)return;
-        setShowDeleteBtn(false)
-    }, [showNotes])
+        setShowDeleteBtn(false);
+    }, [showNotes]);
 
     return (
         <>
@@ -30,13 +28,13 @@ function Notebook({ notebook }) {
                     {notebook.title}
                 </li>
             </div>
-            <ul>
-                {showNotes && Object.values(notebook.notes).map(note => {
+            {showNotes && <ul>
+                {(typeof notebook === 'object' && notebook !== null) && Object.values(notebook?.notes).map(note => {
                     return (
                         <Note key={note.id} note={note} showDeleteBtn={showDeleteBtn} />
                     )
                 })}
-            </ul>
+            </ul>}
         </>
     );
 };

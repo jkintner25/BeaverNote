@@ -8,14 +8,9 @@ function EditNotebook({ notebook, userId }) {
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState(notebook.title);
 
-    // const notebooksStore = useSelector(state => state.notebooks);
-
     const toggleMode = () => {
         setEditMode(!editMode)
     }
-
-    // useEffect(() => {
-    // }, [notebooksStore])
 
     const saveNotebookTitle = () => {
         const updatedNotebook = {

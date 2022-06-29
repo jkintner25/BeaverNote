@@ -19,7 +19,6 @@ function Sidebar() {
     //     dispatch(getAllNotebooks(userId))
     // }, [notebooks])
 
-    console.log("SIDEBAR RE-RENDERED")
     return (
         <div>
             <h3>My NoteBooks</h3>

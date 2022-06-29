@@ -46,12 +46,14 @@ export const addOneNotebook = (payload) => async dispatch => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
     });
-    const notebook = await response.json();
-    dispatch(add(notebook));
+    if(response.ok){
+        const notebook = await response.json();
+        dispatch(add(notebook));
+    };
 };
 
 export const getAllNotebooks = (userId) => async dispatch => {
-    const response = await csrfFetch(`/api/notebooks/user/${userId}`,);
+    const response = await csrfFetch(`/api/notebooks/user/${userId}`);
     if (response.ok) {
         const notebooks = await response.json();
         dispatch(load(notebooks));
@@ -64,12 +66,14 @@ export const editNotebook = (id, payload) => async dispatch => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
     });
-    const notebook = await response.json();
-    dispatch(edit(notebook));
+    if(response.ok) {
+        const notebook = await response.json();
+        dispatch(edit(notebook));
+    };
 };
 
 export const deleteNotebook = (id) => async dispatch => {
-    const response = await csrfFetch(`/api/notesbooks/delete/${id}`, {
+    const response = await csrfFetch(`/api/notebooks/delete/${id}`, {
         method: 'DELETE',
     });
     const notebook = await response.json();
@@ -91,8 +95,7 @@ const notebooksReducer = (state = initialState, action) => {
     let newState = {}
     switch (action.type) {
         case ADD_NOTEBOOK:
-            action.notebook.id.notes.forEach(note=>{newState[action.notebook.id].notes[note.id] = note});
-            return newState;
+            return {...state, [action.notebook.id]: action.notebook}
         case ADD_NOTE:
             newState = { ...state }
             newState[action.note.notebookId].notes[action.note.id] =  action.note

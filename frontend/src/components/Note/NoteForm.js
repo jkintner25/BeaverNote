@@ -24,6 +24,7 @@ function NoteForm() {
         setContent('');
         setSelectedNotebook(null);
         setValidationErrors([]);
+        setShowForm(false)
     }
 
     useEffect(() => {

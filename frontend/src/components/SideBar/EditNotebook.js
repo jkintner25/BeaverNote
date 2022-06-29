@@ -24,6 +24,10 @@ function EditNotebook({ notebook, userId }) {
 
     }
 
+    const deleteThisNotebook = () => {
+        
+    }
+
     return (
         <>
             <div className="notebook-title-div">
@@ -40,6 +44,7 @@ function EditNotebook({ notebook, userId }) {
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)} />
                         <button onClick={() => saveNotebookTitle()}>Save</button>
+                        <button>Delete</button>
                     </div>}
             </div>
         </>

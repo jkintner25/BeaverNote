@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotebooks } from '../../store/notebooks';
 import Notebook from './Notebook';
+import EditNotebook from './EditNotebook';
 
 function Sidebar() {
     const dispatch = useDispatch();
-    const [tripwire, setTripwire] = useState(false)
+    const [editMode, setEditMode] = useState(false)
     const currentNote = useSelector(state => state.notes && state.notes)
 
     const userId = useSelector(state => state.session?.user?.id)
@@ -17,15 +18,18 @@ function Sidebar() {
     }, [dispatch, userId])
 
     useEffect(()=>{
-        setTripwire(false)
     }, [notebooks, currentNote])
 
     return (
         <div>
             <h3>My NoteBooks</h3>
+            {notebooks?.length > 0 && <button onClick={() => setEditMode(!editMode)}>Edit Notebooks</button>}
             <ul>
-                {notebooks?.length > 0 && notebooks.map(notebook => (
+                {notebooks.length > 0 && !editMode && notebooks.map(notebook => (
                     <Notebook key={notebook.id} notebook={notebook} />
+                ))}
+                {notebooks.length > 0 && editMode && notebooks.map(notebook => (
+                    <EditNotebook key={notebook.id} notebook={notebook} userId={userId} />
                 ))}
             </ul>
         </div>

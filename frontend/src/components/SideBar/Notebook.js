@@ -12,6 +12,7 @@ function Notebook({ notebook }) {
     const toggleNotes = () => {
         setShowNotes(!showNotes)
     }
+
     useEffect(()=>{
     }, [notebooksStore])
 
@@ -23,7 +24,7 @@ function Notebook({ notebook }) {
     return (
         <>
             <div className="notebook-title-div">
-                {showNotes && <button onClick={() => setShowDeleteBtn(!showDeleteBtn)}>Edit</button>}
+                {showNotes && <button onClick={() => setShowDeleteBtn(!showDeleteBtn)}>Edit Notes</button>}
                 <li className="notebook-title-li"
                     onClick={toggleNotes}>
                     {notebook.title}

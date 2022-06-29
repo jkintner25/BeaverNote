@@ -14,6 +14,8 @@ function NoteView() {
     const [title, setTitle] = useState(thisNote ? thisNote.title : '')
     const [content, setContent] = useState(thisNote ? thisNote.content : '')
 
+    console.log(thisNote)
+
     useEffect(()=>{
         setTitle(thisNote.title);
         setContent(thisNote.content);
@@ -54,7 +56,7 @@ function NoteView() {
 
     return (
         <div>
-            {thisNote ?
+            {(thisNote.id) ?
             <div className="note-box">
 
                 {thisNote && viewNote && <h3
@@ -89,8 +91,10 @@ function NoteView() {
                 onClick={()=>updateThisNote()}
                 >Save</button>}
 
+                <p>Click on title or content to edit!</p>
+
             </div> :
-            <p>Loading</p>
+            <p>Select a note!</p>
             }
         </div>
     )

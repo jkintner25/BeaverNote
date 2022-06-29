@@ -19,7 +19,7 @@ const load = (notebooks) => ({
     notebooks
 });
 
-const edit = (notebook) => ({
+export const edit = (notebook) => ({
     type: UPDATE_NOTEBOOK,
     notebook
 });
@@ -107,7 +107,6 @@ const notebooksReducer = (state = initialState, action) => {
                     newState[notebook.id].notes[note.id] = note;
                 })
             });
-            // newState[action.notebook.id].notes.forEach(
             return newState;
         case UPDATE_NOTEBOOK:
             return { ...state, [action.notebook.id]: action.notebook };

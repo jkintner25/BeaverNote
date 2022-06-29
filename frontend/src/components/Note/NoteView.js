@@ -1,7 +1,7 @@
 import "./Note.css"
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addNote, updateNote } from "../../store/notes";
+import { updateNote } from "../../store/notes";
 import { getAllNotebooks } from "../../store/notebooks";
 
 function NoteView() {
@@ -50,7 +50,6 @@ function NoteView() {
         .then(()=>dispatch(getAllNotebooks(userId)))
 
         setViewNote(true)
-        setEditNote(false)
     }
 
     return (

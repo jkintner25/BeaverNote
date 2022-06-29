@@ -1,7 +1,7 @@
 import  React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { deleteNoteInDB } from "../../store/notebooks";
-import { addNote } from "../../store/notes";
+import { addNote, removeThisNote } from "../../store/notes";
 import "./sidebar.css"
 
 function Note({ note, showDeleteBtn }) {
@@ -20,6 +20,7 @@ function Note({ note, showDeleteBtn }) {
 
     const deleteThisNote = (id) => {
         dispatch(deleteNoteInDB(id));
+        dispatch(removeThisNote(note));
     }
 
     return (

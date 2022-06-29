@@ -43,6 +43,7 @@ export const deleteNote = (note) => ({
 export const addOneNotebook = (payload) => async dispatch => {
     const response = await csrfFetch(`/api/notebooks`, {
         method: 'POST',
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
     });
     const notebook = await response.json();
@@ -59,7 +60,8 @@ export const getAllNotebooks = (userId) => async dispatch => {
 
 export const editNotebook = (id, payload) => async dispatch => {
     const response = await csrfFetch(`/api/notebooks/edit/${id}`, {
-        method: 'PATCH',
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(payload)
     });
     const notebook = await response.json();

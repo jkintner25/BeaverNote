@@ -47,7 +47,7 @@ function NoteView() {
         }
 
         dispatch(updateNote(id, updatedNote))
-        .then(dispatch(getAllNotebooks(userId)))
+        .then(()=>dispatch(getAllNotebooks(userId)))
 
         setViewNote(true)
         setEditNote(false)

@@ -107,14 +107,14 @@ const notebooksReducer = (state = initialState, action) => {
             delete newState[action.note.notebookId].notes[action.note.id]
             return newState;
         case GET_NOTEBOOKS:
-            action.notebooks.forEach(notebook => {
+            return action.notebooks.reduce((newState, notebook) => {
                 newState[notebook.id] = notebook;
-                newState[notebook.id].notes = {}
-                newState[notebook.id].Notes.forEach(note=>{
-                    newState[notebook.id].notes[note.id] = note;
-                })
-            });
-            return newState;
+                newState[notebook.id].notes = notebook.Notes.reduce((notesMap, note) => {
+                    notesMap[note.id] = note
+                    return notesMap
+                }, {})
+                return newState
+            }, {})
         case UPDATE_NOTEBOOK:
             return { ...state, [action.notebook.id]: action.notebook };
         case REMOVE_NOTEBOOK:

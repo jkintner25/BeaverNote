@@ -1,0 +1,29 @@
+
+
+.navbar {
+    position: static;
+    top: .1rem;
+    left: .1rem;
+    right: .1rem;
+    display: flex;
+    flex-direction: row;
+    background-color: #8da9c4;
+    padding: 1rem;
+    width: auto;
+    justify-content: space-between;
+    border:solid 5px #eef4ed;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    margin: 0px 2rem;
+}
+
+.logged-out-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+.home-link {
+    margin: 0px 2rem;
+}
+
+.logged-out-nav p {
+}

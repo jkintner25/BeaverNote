@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import * as sessionActions from "../../store/session";
 import './Navigation.css';
 
@@ -21,7 +21,7 @@ function DemoUser() {
     };
 
     return (
-        <button className='demo-login-button' onClick={()=>demoLogin()}>Demo</button>
+        <p className='demo-login-button' onClick={()=>demoLogin()}>Demo</p>
     );
 }
 

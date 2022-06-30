@@ -29,7 +29,7 @@ const remove = (notebook) => ({
     notebook
 });
 
-export const addNote = (note) => ({
+export const addNoteToNotebook = (note) => ({
     type: ADD_NOTE,
     note
 })
@@ -95,10 +95,12 @@ const notebooksReducer = (state = initialState, action) => {
     let newState = {}
     switch (action.type) {
         case ADD_NOTEBOOK:
-            return {...state, [action.notebook.id]: action.notebook}
+            newState = {...state, [action.notebook.id]: action.notebook}
+            newState[action.notebook.id].notes = {}
+            return newState
         case ADD_NOTE:
             newState = { ...state }
-            newState[action.note.notebookId].notes[action.note.id] =  action.note
+            newState[action.note.notebookId].notes[action.note.id] =  action.note;
             return newState;
         case DELETE_NOTE:
             newState = { ...state }

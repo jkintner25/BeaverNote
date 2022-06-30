@@ -7,17 +7,13 @@ import EditNotebook from './EditNotebook';
 function Sidebar() {
     const dispatch = useDispatch();
     const [editMode, setEditMode] = useState(false)
-    // const currentNote = useSelector(state => state.notes && state.notes)
-
-    console.log("SIDEBAR RE-RENDERED")
 
     const userId = useSelector(state => state.session.user?.id)
     const notebooks = useSelector(state => state.notebooks && Object.values(state.notebooks))
 
-    // useEffect(()=>{
-    //     if(!userId)return;
-    //     dispatch(getAllNotebooks(userId))
-    // }, [notebooks])
+    useEffect(()=>{
+        dispatch(getAllNotebooks(userId))
+    }, [dispatch, userId])
 
     return (
         <div>

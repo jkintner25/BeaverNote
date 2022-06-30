@@ -14,8 +14,6 @@ function NoteView() {
     const [title, setTitle] = useState(thisNote ? thisNote.title : '')
     const [content, setContent] = useState(thisNote ? thisNote.content : '')
 
-    console.log(thisNote)
-
     useEffect(()=>{
         setTitle(thisNote.title);
         setContent(thisNote.content);

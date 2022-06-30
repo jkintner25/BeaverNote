@@ -10,7 +10,6 @@ const router = express.Router();
 //create new notebook
 router.post(
     '/',
-    requireAuth,
     asyncHandler(async (req, res) => {
         const notebook = await Notebook.create(req.body);
         return res.json(notebook)
@@ -20,7 +19,6 @@ router.post(
 //get all notebooks of user
 router.get(
     '/user/:userId',
-    requireAuth,
     asyncHandler(async (req, res) => {
         const {userId} = req.params;
         const notebooks = await Notebook.findAll({
@@ -34,7 +32,6 @@ router.get(
 //get one notebook by id
 router.get(
     '/:id',
-    requireAuth,
     asyncHandler(async (req, res) => {
         const id = req.params.id;
         const notebook = await Notebook.findByPk(id);
@@ -45,7 +42,6 @@ router.get(
 //edit a notebook
 router.put(
     '/edit/:id',
-    requireAuth,
     asyncHandler(async (req, res) => {
         const id = req.params.id;
         const notebook = await Notebook.findByPk(id);
@@ -57,7 +53,6 @@ router.put(
 //delete a notebook
 router.delete(
     '/delete/:id',
-    requireAuth,
     asyncHandler(async (req, res) => {
         const id = req.params.id;
         const notebook = await Notebook.findByPk(id);

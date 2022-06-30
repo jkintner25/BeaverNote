@@ -9,7 +9,6 @@ const router = express.Router();
 //create new note
 router.post(
     '/',
-    requireAuth,
     asyncHandler(async (req, res) => {
         const note = await Note.create(req.body);
         return res.json(note)
@@ -19,7 +18,6 @@ router.post(
 //get one note by id
 router.get(
     '/:id',
-    requireAuth,
     asyncHandler(async (req, res) => {
         const id = req.params.id;
         const note = await Note.findByPk(id);
@@ -30,7 +28,6 @@ router.get(
 //edit a note
 router.put(
     '/edit/:id',
-    requireAuth,
     asyncHandler(async (req, res) => {
         const id = req.params.id;
         const note = await Note.findByPk(id);
@@ -42,7 +39,6 @@ router.put(
 //delete a note
 router.delete(
     '/delete/:id',
-    requireAuth,
     asyncHandler(async (req, res) => {
         const id = req.params.id;
         const note = await Note.findByPk(id);

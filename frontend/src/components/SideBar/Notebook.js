@@ -4,39 +4,36 @@ import { useSelector } from 'react-redux';
 import "./sidebar.css"
 
 function Notebook({ notebook }) {
-    const [showNotes, setShowNotes] = useState(false)
-    const [showDeleteBtn, setShowDeleteBtn] = useState(false)
+    const [showNotes, setShowNotes] = useState(false);
+    const [showDeleteBtn, setShowDeleteBtn] = useState(false);
 
-    const notebooksStore = useSelector(state=>state.notebooks)
+    const notebooks = useSelector(state => state.notebooks && state.notebooks)
 
     const toggleNotes = () => {
-        setShowNotes(!showNotes)
+        setShowNotes(!showNotes);
     }
 
     useEffect(()=>{
-    }, [notebooksStore])
-
-    useEffect(()=>{
         if(!showNotes)return;
-        setShowDeleteBtn(false)
-    }, [showNotes])
+        setShowDeleteBtn(false);
+    }, [showNotes]);
 
     return (
         <>
             <div className="notebook-title-div">
-                {showNotes && <button onClick={() => setShowDeleteBtn(!showDeleteBtn)}>Edit Notes</button>}
+                {showNotes && <button onClick={() => setShowDeleteBtn(!showDeleteBtn)}>Delete Notes</button>}
                 <li className="notebook-title-li"
                     onClick={toggleNotes}>
                     {notebook.title}
                 </li>
             </div>
-            <ul>
-                {showNotes && Object.values(notebook.notes).map(note => {
+            {showNotes && <ul>
+                {notebooks[notebook.id].notes && Object.values(notebooks[notebook.id].notes).map(note => {
                     return (
                         <Note key={note.id} note={note} showDeleteBtn={showDeleteBtn} />
                     )
                 })}
-            </ul>
+            </ul>}
         </>
     );
 };

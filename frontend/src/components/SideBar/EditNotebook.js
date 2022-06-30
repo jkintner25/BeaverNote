@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteNotebook, editNotebook } from '../../store/notebooks';
 import { removeThisNote } from '../../store/notes';

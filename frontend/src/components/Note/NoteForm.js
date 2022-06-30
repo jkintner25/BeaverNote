@@ -1,13 +1,13 @@
 import "./Note.css"
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addNote, getAllNotebooks } from "../../store/notebooks";
+import { addNoteToNotebook, getAllNotebooks } from "../../store/notebooks";
 import { createNote } from "../../store/notes";
 
 function NoteForm() {
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.session?.user?.id)
-    const userNotebooks = useSelector(state => state.notebooks && Object.values(state?.notebooks))
+    const userId = useSelector(state => state.session.user?.id)
+    const userNotebooks = useSelector(state => state.notebooks && Object.values(state.notebooks))
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedNotebook, setSelectedNotebook] = useState(null);
@@ -48,7 +48,11 @@ function NoteForm() {
             notebookId: selectedNotebook
         };
 
-        dispatch(createNote(newNote)).then((note)=>dispatch(addNote(note))).then(reset)
+        dispatch(createNote(newNote)).then((note)=> {
+            console.log(note)
+            dispatch(addNoteToNotebook(note))
+        })
+        .then(reset)
     }
 
     return (

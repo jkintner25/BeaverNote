@@ -7,29 +7,24 @@ import EditNotebook from './EditNotebook';
 function Sidebar() {
     const dispatch = useDispatch();
     const [editMode, setEditMode] = useState(false)
-    const currentNote = useSelector(state => state.notes && state.notes)
 
-    const userId = useSelector(state => state.session?.user?.id)
+    const userId = useSelector(state => state.session.user?.id)
     const notebooks = useSelector(state => state.notebooks && Object.values(state.notebooks))
 
-    useEffect(() => {
-        if (!userId) return;
+    useEffect(()=>{
         dispatch(getAllNotebooks(userId))
     }, [dispatch, userId])
-
-    useEffect(()=>{
-    }, [notebooks, currentNote])
 
     return (
         <div>
             <h3>My NoteBooks</h3>
-            {notebooks?.length > 0 && <button onClick={() => setEditMode(!editMode)}>Edit Notebooks</button>}
+            {notebooks.length > 0 && <button onClick={() => setEditMode(!editMode)}>Edit Notebooks</button>}
             <ul>
                 {notebooks.length > 0 && !editMode && notebooks.map(notebook => (
-                    <Notebook key={notebook.id} notebook={notebook} />
+                    <Notebook key={notebook.id} notebook={notebook} userId={userId} />
                 ))}
                 {notebooks.length > 0 && editMode && notebooks.map(notebook => (
-                    <EditNotebook key={notebook.id} notebook={notebook} userId={userId} />
+                    <EditNotebook key={notebook.id} notebook={notebook} />
                 ))}
             </ul>
         </div>

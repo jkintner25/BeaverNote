@@ -1,5 +1,5 @@
 import "./notebookForm.css"
-import { React, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addOneNotebook, getAllNotebooks } from "../../store/notebooks";
 
@@ -16,11 +16,6 @@ function NotebookForm() {
         setShowForm(false)
     }
 
-    useEffect(() => {
-        if (!userId) return;
-        dispatch(getAllNotebooks(userId))
-    }, [dispatch, userId])
-
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -33,8 +28,8 @@ function NotebookForm() {
             userId: userId
         };
 
-        dispatch(addOneNotebook(newNotebook)).then(()=>getAllNotebooks())
-        .then(reset)
+        dispatch(addOneNotebook(newNotebook)).then(()=>getAllNotebooks(userId))
+        .then(()=>reset())
     }
 
     return (

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
+import { ReactComponent as Otter } from "../../images/otter.svg"
+
 
 function ProfileButton({ user }) {
     const history = useHistory();
@@ -33,16 +35,14 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu}>
-                <i className="fas fa-user-circle" />
-            </button>
+            <div className="profile-button" onClick={openMenu}>
+                <Otter className='otter' />
+            </div>
             {showMenu && (
                 <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={logout}>Log Out</button>
-                    </li>
+                    <p className="dropdown-li">{user.username}</p>
+                    <p className="dropdown-li">{user.email}</p>
+                    <button className="logout-button" onClick={logout}>Log Out</button>
                 </ul>
             )}
         </>

@@ -6,17 +6,21 @@ import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import DemoUser from './DemoUser';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div className='logged-in-nav nav'>
+        <NavLink className='home-link' exact to="/home">Home</NavLink>
+        <h1 className='beavernote'>Beavernote</h1>
+        <ProfileButton user={sessionUser} />
+      </div>
     );
   } else {
     sessionLinks = (
-      <div className='logged-out-nav'>
+      <div className='logged-out-nav nav'>
         <LoginFormModal />
         <NavLink to="/signup">Sign Up</NavLink>
         <DemoUser />
@@ -25,10 +29,9 @@ function Navigation({ isLoaded }){
   }
 
   return (
-      <div className='navbar'>
-        <NavLink className='home-link' exact to="/home">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </div>
+    <div>
+      {isLoaded && sessionLinks}
+    </div>
   );
 }
 

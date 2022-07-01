@@ -11,11 +11,11 @@ function NoteForm() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedNotebook, setSelectedNotebook] = useState(null);
-    const [validationErrors, setValidationErrors] = useState([])
+    const [validationErrors, setValidationErrors] = useState(null)
     const [showForm, setShowForm] = useState(false)
 
-    useEffect(()=>{
-        if(!userNotebooks[0] || !(selectedNotebook === null))return;
+    useEffect(() => {
+        if (!userNotebooks[0] || !(selectedNotebook === null)) return;
         setSelectedNotebook(Number(userNotebooks[0].id))
     }, [userNotebooks, selectedNotebook])
 
@@ -23,7 +23,7 @@ function NoteForm() {
         setTitle('');
         setContent('');
         setSelectedNotebook(null);
-        setValidationErrors([]);
+        setValidationErrors(null);
         setShowForm(false)
     }
 
@@ -32,14 +32,17 @@ function NoteForm() {
         dispatch(getAllNotebooks(userId))
     }, [dispatch, userId])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
+    useEffect(() => {
         let errors = []
         if (title.length < 3 || title.length > 30) errors.push('Title must be between 3-30 characters!')
         if (content.length < 1) errors.push('You need more than one character to save this note!')
         if (!selectedNotebook) errors.push('Select a notebook!')
-        if (errors.length > 0) return setValidationErrors(errors)
+        if (errors.length > 0)setValidationErrors(errors)
+        if (errors.length === 0) setValidationErrors(null)
+    }, [title, content, selectedNotebook])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
         const newNote = {
             title: title,
@@ -48,47 +51,49 @@ function NoteForm() {
             notebookId: selectedNotebook
         };
 
-        dispatch(createNote(newNote)).then((note)=> {
-            console.log(note)
+        dispatch(createNote(newNote)).then((note) => {
             dispatch(addNoteToNotebook(note))
         })
-        .then(reset)
+            .then(reset)
     }
 
     return (
-        <div>
-            <button onClick={()=>setShowForm(!showForm)}>Create a new note!</button>
+        <div className="create-note-div">
+            <button className="create-note-button" onClick={() => setShowForm(!showForm)}>Create a new note!</button>
             {showForm && <>
-            {validationErrors && validationErrors.map(error=>{
-                return <li key={error}>{error}</li>
-            })}
-            <form className="note-form" onSubmit={handleSubmit}>
-                <div className="form-inner-container">
-                    <input type={'text'}
-                        value={title}
-                        placeholder={'Note Title'}
-                        onChange={(e) => setTitle(e.target.value)}
+                {validationErrors && validationErrors.map(error => {
+                    return <li key={error}>{error}</li>
+                })}
+                <form className="note-form" onSubmit={handleSubmit}>
+                    <div className="note-form-inner-container">
+                        <label>Title</label>
+                        <input type={'text'}
+                            value={title}
+                            placeholder={'Note Title'}
+                            onChange={(e) => setTitle(e.target.value)}
                         ></input>
-                    <input type={'text'}
-                        value={content}
-                        placeholder={'Note Content'}
-                        onChange={(e) => setContent(e.target.value)}
+                        <label>Content</label>
+                        <input type={'text'}
+                            value={content}
+                            placeholder={'Note Content'}
+                            onChange={(e) => setContent(e.target.value)}
                         ></input>
-                    <select className="notebook-selector"
-                    onChange={(e)=>setSelectedNotebook(e.target.value)}>
-                        {userNotebooks && userNotebooks.map(notebook=>{
-                            return <option
-                            key={notebook.id}
-                            name={notebook.title}
-                            value={Number(notebook.id)}
-                            >{notebook.title}</option>
-                        })}
-                    </select>
+                        <label>Notebooks:</label>
+                        <select className="notebook-selector"
+                            onChange={(e) => setSelectedNotebook(e.target.value)}>
+                            {userNotebooks && userNotebooks.map(notebook => {
+                                return <option
+                                    key={notebook.id}
+                                    name={notebook.title}
+                                    value={Number(notebook.id)}
+                                >{notebook.title}</option>
+                            })}
+                        </select>
+                    </div>
                     <button type={'submit'}
                         disabled={!title || !content}
-                        >Save this note</button>
-                </div>
-            </form>
+                    >Save this note</button>
+                </form>
             </>}
         </div>
     );

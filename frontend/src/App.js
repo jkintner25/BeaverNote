@@ -8,6 +8,7 @@ import Sidebar from "./components/SideBar/Sidebar";
 import NoteForm from "./components/Note/NoteForm";
 import NoteView from "./components/Note/NoteView";
 import NotebookForm from "./components/NotebookForm/NotebookForm";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

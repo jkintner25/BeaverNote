@@ -59,3 +59,55 @@ button.create-note-button {
     border: solid 5px #eef4ed;
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
+
+.select-note {
+    position: absolute;
+    left: 6.7rem;
+    top: 3rem;
+}
+
+.note-box {
+    padding: 1rem;
+    height: 100%;
+}
+
+.note-title {
+    cursor: text;
+}
+
+.note-content {
+    cursor: text;
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip:before {
+    content: attr(data-text);
+    /* here's the magic */
+    position: absolute;
+
+    /* vertically center */
+    top: -100%;
+    transform: translateY(-50%);
+
+    /* move to right */
+    left: 10%;
+    margin-left: 15px;
+    /* and add a small left margin */
+
+    /* basic styles */
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #000;
+    color: #fff;
+    text-align: center;
+
+    display: none;
+}
+
+.tooltip:hover:before {
+    display: block;
+}

@@ -58,8 +58,9 @@ function NoteView() {
             <div className="note-box">
 
                 {thisNote && viewNote && <h3
-                className="note-title"
+                className="note-title tooltip"
                 onClick={()=>setEditNote(true)}
+                data-text='Click to edit!'
                 >{thisNote.title}</h3>}
 
                 {thisNote && editNote && <input
@@ -70,8 +71,9 @@ function NoteView() {
                 />}
 
                 {thisNote && viewNote && <p
-                className="note-content"
+                className="note-content tooltip"
                 onClick={()=>setEditNote(true)}
+                data-text='Click to edit!'
                 >{thisNote.content}</p>}
 
                 {thisNote && editNote && <input
@@ -88,8 +90,6 @@ function NoteView() {
                 {thisNote && editNote && <button
                 onClick={()=>updateThisNote()}
                 >Save</button>}
-
-                <p className="click-to-edit">Click on title or content to edit!</p>
 
             </div> :
             <p className="select-note">Select a note!</p>

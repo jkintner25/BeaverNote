@@ -67,3 +67,18 @@ button:hover {
 button:focus {
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }
+
+input {
+    margin-left: .3rem;
+    margin-right: 1rem;
+    border: none;
+    appearance: none;
+    background: #eef4ed;
+    padding: 6px;
+    border-radius: 5px;
+    outline: none;
+}
+
+label {
+    font-size: 14px;
+}

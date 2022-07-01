@@ -4,11 +4,28 @@
     top: 2rem;
 }
 
-.note-form {
-
+.create-notebook-div button {
+    margin-bottom: .6rem;
 }
 
-.note-form input {
-    width: 14rem;
+.create-notebook-save-button {
+    margin: .4rem;
+    margin-bottom: 0;
 }
 
+.notebook-form input {
+    width: 10.4rem;
+    margin-top: .3rem;
+}
+
+form.notebook-form {
+    margin-bottom: 0;
+}
+
+.create-notebook-div li {
+    margin-left: 1.5%;
+    font-size: 14px;
+    max-width: 30%;
+    word-wrap: break-word;
+    list-style: none;
+}

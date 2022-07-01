@@ -53,7 +53,7 @@ function NoteView() {
     }
 
     return (
-        <div>
+        <div className="note-view">
             {(thisNote.id) ?
             <div className="note-box">
 
@@ -89,10 +89,10 @@ function NoteView() {
                 onClick={()=>updateThisNote()}
                 >Save</button>}
 
-                <p>Click on title or content to edit!</p>
+                <p className="click-to-edit">Click on title or content to edit!</p>
 
             </div> :
-            <p>Select a note!</p>
+            <p className="select-note">Select a note!</p>
             }
         </div>
     )

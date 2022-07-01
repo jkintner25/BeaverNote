@@ -41,17 +41,17 @@ function NotebookForm() {
             <button onClick={() => setShowForm(!showForm)}>Create a new notebook!</button>
             {showForm && <>
                 {validationError.length > 0 && <li>{validationError}</li>}
-                <form className="note-form" onSubmit={handleSubmit}>
+                <form className="notebook-form" onSubmit={handleSubmit}>
                     <div className="form-inner-container">
                         <input type={'text'}
                             value={title}
                             placeholder={'Notebook Title'}
                             onChange={(e) => setTitle(e.target.value)}
                         ></input>
-                        <button type={'submit'}
-                            disabled={validationError.length > 0}
-                        >Save</button>
                     </div>
+                    <button className="create-notebook-save-button" type={'submit'}
+                        disabled={validationError.length > 0}
+                    >Save</button>
                 </form>
             </>}
         </div>

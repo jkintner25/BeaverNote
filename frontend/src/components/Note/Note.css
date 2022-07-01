@@ -1,3 +1,61 @@
 p {
     cursor: default;
 }
+
+.note-form {
+    position: relative;
+}
+
+.create-note-div {
+    position: relative;
+    left: 3rem;
+    top: 2rem;
+}
+
+button.create-note-button {
+    margin: 0;
+    margin-bottom: .5rem;
+}
+
+.note-form input {
+    width: 10.4rem;
+    margin: .5rem 0;
+    margin-left: .3rem;
+}
+
+.notebook-selector {
+    margin: .3rem;
+    width: 10rem;
+    margin-bottom: .8rem;
+}
+
+.note-form-inner-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.note-form-inner-container label {
+    color: #eef4ed;
+    margin: 0;
+    margin-left: .5rem;
+}
+
+.create-note-div li {
+    margin: 3% 0;
+    margin-left: 1.5%;
+    font-size: 14px;
+    max-width: 30%;
+    word-wrap: break-word;
+    list-style: none;
+}
+
+.note-view {
+    position: absolute;
+    top: 9.7%;
+    right: 6%;
+    width: 50%;
+    height: 60%;
+    background-color: #8da9c4;
+    border: solid 5px #eef4ed;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}

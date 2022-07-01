@@ -82,3 +82,7 @@ input {
 label {
     font-size: 14px;
 }
+
+button:disabled {
+    opacity: 50%;
+}

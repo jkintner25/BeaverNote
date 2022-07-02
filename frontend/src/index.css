@@ -31,7 +31,7 @@ h3 {
 
 button {
     align-self: center;
-    background-color: #eef4ed;
+    background-color: #0b2545;
     background-image: none;
     background-position: 0 90%;
     background-repeat: repeat no-repeat;
@@ -41,10 +41,10 @@ button {
     border-width: 1px;
     box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
     box-sizing: border-box;
-    color: #41403e;
+    color: #eef4ed;
     cursor: pointer;
     display: inline-block;
-    font-family: Neucha, sans-serif;
+    font-family: 'Inconsolata', monospace;
     font-size: 1rem;
     line-height: 23px;
     outline: none;

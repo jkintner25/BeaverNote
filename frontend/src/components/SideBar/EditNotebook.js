@@ -58,7 +58,7 @@ function EditNotebook({ notebook, userId }) {
                             value={title}
                             onChange={(e) => setTitle(e.target.value)} />
                         <button onClick={() => toggleMode()}>Cancel</button>
-                        <button onClick={() => saveNotebookTitle()}>Save</button>
+                        <button disabled={validationErrors} onClick={() => saveNotebookTitle()}>Save</button>
                         <button onClick={() => deleteThisNotebook()}>Delete</button>
                     </div>}
             </div>

@@ -120,6 +120,10 @@ p {
     right: 1rem;
     top: 3.4rem;
     text-decoration: none;
+    z-index: 1000;
+    background-color: #8da9c4;
+    border: solid 5px #eef4ed;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
 .dropdown-li {

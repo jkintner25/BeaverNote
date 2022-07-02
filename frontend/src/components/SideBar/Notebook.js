@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import "./sidebar.css"
 
-function Notebook({ notebook }) {
+function Notebook({ notebook, showDeleteBtn, setShowDeleteBtn }) {
     const [showNotes, setShowNotes] = useState(false);
-    const [showDeleteBtn, setShowDeleteBtn] = useState(false);
 
     const notebooks = useSelector(state => state.notebooks && state.notebooks)
 
@@ -13,15 +12,14 @@ function Notebook({ notebook }) {
         setShowNotes(!showNotes);
     }
 
-    useEffect(()=>{
-        if(!showNotes)return;
+    useEffect(() => {
+        if (!showNotes) return;
         setShowDeleteBtn(false);
     }, [showNotes]);
 
     return (
         <>
             <div className="notebook-title-div">
-                {showNotes && <button onClick={() => setShowDeleteBtn(!showDeleteBtn)}>Delete Notes</button>}
                 <li className="notebook-title-li"
                     onClick={toggleNotes}>
                     {notebook.title}

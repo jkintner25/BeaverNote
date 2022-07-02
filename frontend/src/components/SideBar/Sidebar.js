@@ -7,11 +7,12 @@ import EditNotebook from './EditNotebook';
 function Sidebar() {
     const dispatch = useDispatch();
     const [editMode, setEditMode] = useState(false)
+    const [showDeleteBtn, setShowDeleteBtn] = useState(false);
 
     const userId = useSelector(state => state.session.user?.id)
     const notebooks = useSelector(state => state.notebooks && Object.values(state.notebooks))
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(getAllNotebooks(userId))
     }, [dispatch, userId])
 
@@ -20,13 +21,16 @@ function Sidebar() {
             <h3>My NoteBooks</h3>
             <ul>
                 {notebooks.length > 0 && !editMode && notebooks.map(notebook => (
-                    <Notebook key={notebook.id} notebook={notebook} userId={userId} />
-                    ))}
+                    <Notebook key={notebook.id} setShowDeleteBtn={setShowDeleteBtn} showDeleteBtn={showDeleteBtn} notebook={notebook} userId={userId} />
+                ))}
                 {notebooks.length > 0 && editMode && notebooks.map(notebook => (
                     <EditNotebook key={notebook.id} notebook={notebook} />
-                    ))}
+                ))}
             </ul>
+            <div>
             {notebooks.length > 0 && <button onClick={() => setEditMode(!editMode)}>Edit Notebooks</button>}
+            {notebooks.length > 0 && <button onClick={() => setShowDeleteBtn(!showDeleteBtn)}>Delete Notes</button>}
+            </div>
         </div>
     );
 };

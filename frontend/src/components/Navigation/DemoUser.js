@@ -15,13 +15,13 @@ function DemoUser() {
         })).then(
             (data) => {
                 if (data.user)
-                    return history.push('/home')
+                    return history.push('/')
             }
         );
     };
 
     return (
-        <p className='demo-login-button' onClick={()=>demoLogin()}>Demo</p>
+        <p className='demo-login-button' onClick={demoLogin}>Demo</p>
     );
 }
 

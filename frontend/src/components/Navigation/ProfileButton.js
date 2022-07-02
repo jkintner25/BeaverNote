@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import { ReactComponent as Otter } from "../../images/otter.svg"
-
+import './Navigation.css';
 
 function ProfileButton({ user }) {
     const history = useHistory();

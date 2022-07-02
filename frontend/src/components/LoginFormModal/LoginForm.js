@@ -17,7 +17,7 @@ function LoginForm() {
         dispatch(sessionActions.login({ credential, password })).then(
             (data) => {
                 if (data.user)
-                return history.push('/home')
+                return history.push('/')
             }
         ).catch(
             async (res) => {

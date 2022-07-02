@@ -6,7 +6,8 @@ const GET_NOTEBOOKS = "notebooks/GET_NOTEBOOKS";
 const UPDATE_NOTEBOOK = "notebooks/UPDATE_NOTEBOOK";
 const REMOVE_NOTEBOOK = "notebooks/REMOVE_NOTEBOOK";
 const ADD_NOTE = "notebooks/ADD_NOTE";
-const DELETE_NOTE = "notebooks/DELETE_NOTE"
+const DELETE_NOTE = "notebooks/DELETE_NOTE";
+const CLEAR_STATE = "notebooks/CLEAR_STATE";
 
 //actions
 const add = (notebook) => ({
@@ -37,6 +38,10 @@ export const addNoteToNotebook = (note) => ({
 export const deleteNote = (note) => ({
     type: DELETE_NOTE,
     note
+})
+
+export const clearState = () => ({
+    type: CLEAR_STATE
 })
 
 //thunk middleware
@@ -120,6 +125,8 @@ const notebooksReducer = (state = initialState, action) => {
         case REMOVE_NOTEBOOK:
             newState = { ...state };
             delete newState[action.notebook.id];
+            return newState;
+        case CLEAR_STATE:
             return newState;
         default:
             return state;

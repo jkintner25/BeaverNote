@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 //action types
 const ADD_NOTE = 'notes/ADD_NOTE';
 const REMOVE_NOTE = 'notes/REMOVE_NOTE';
+const CLEAR_NOTE_STATE = 'notes/CLEAR_NOTE_STATE'
 
 //actions
 export const addNote = (note) => ({
@@ -13,6 +14,11 @@ export const addNote = (note) => ({
 export const removeThisNote = (note) => ({
     type: REMOVE_NOTE,
     note
+});
+
+export const clearNoteState = () => ({
+    type: CLEAR_NOTE_STATE,
+
 });
 
 //thunks
@@ -58,6 +64,8 @@ const notesReducer = (state = initialState, action) => {
         case REMOVE_NOTE:
             newState = { [action.note.id]: action.note};
             delete newState[action.note.id];
+            return newState;
+        case CLEAR_NOTE_STATE:
             return newState;
         default:
             return state;

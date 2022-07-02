@@ -4,6 +4,8 @@ import { useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import { ReactComponent as Otter } from "../../images/otter.svg"
 import './Navigation.css';
+import { clearState } from "../../store/notebooks";
+import { clearNoteState } from "../../store/notes";
 
 function ProfileButton({ user }) {
     const history = useHistory();
@@ -29,6 +31,8 @@ function ProfileButton({ user }) {
 
     const logout = (e) => {
         e.preventDefault();
+        dispatch(clearState());
+        dispatch(clearNoteState());
         dispatch(sessionActions.logout());
         history.push('/')
     };

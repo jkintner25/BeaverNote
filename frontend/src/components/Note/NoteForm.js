@@ -34,8 +34,8 @@ function NoteForm() {
 
     useEffect(() => {
         let errors = []
-        if (title.length < 3 || title.length > 30) errors.push('Title must be between 3-30 characters!')
-        if (content.length < 1) errors.push('You need more than one character to save this note!')
+        if (title && (title.length < 3 || title.length > 30)) errors.push('Title must be between 3-30 characters!')
+        if (content.length === 1) errors.push('You need more than one character to save this note!')
         if (!selectedNotebook) errors.push('Select a notebook!')
         if (errors.length > 0)setValidationErrors(errors)
         if (errors.length === 0) setValidationErrors(null)

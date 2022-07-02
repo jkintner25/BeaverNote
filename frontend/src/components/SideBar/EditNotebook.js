@@ -8,18 +8,21 @@ function EditNotebook({ notebook, userId }) {
     const dispatch = useDispatch();
     const [editMode, setEditMode] = useState(false);
     const [title, setTitle] = useState(notebook.title);
-    const [validationErrors, setValidationErrors] = useState(null);
+    const [validationErrors, setValidationErrors] = useState('');
 
-    const thisNote = useSelector(state => state.notes && state.notes)
+    const thisNote = useSelector(state => state.notes && state.notes);
 
     useEffect(()=>{
-        if(title.length > 2 && title.length < 31) return;
-        setValidationErrors('Title must be between 3-30 characters!')
-        console.log('here', validationErrors)
+        if(title.length > 2 && title.length < 31) {
+            setValidationErrors('');
+            return;
+        };
+        setValidationErrors('Title must be between 3-30 characters!');
     }, [title, validationErrors])
 
     const toggleMode = () => {
-        setEditMode(!editMode)
+        setEditMode(!editMode);
+        setTitle(notebook.title);
     }
 
     const saveNotebookTitle = () => {

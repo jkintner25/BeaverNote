@@ -90,3 +90,7 @@ ul {
     font-size: 12px;
     padding: 0 .1rem;
 }
+
+.edit-notebook-input {
+    width: 80%;
+}

@@ -13,21 +13,31 @@ function NoteView() {
     const [editNote, setEditNote] = useState(false)
     const [title, setTitle] = useState(thisNote ? thisNote.title : '')
     const [content, setContent] = useState(thisNote ? thisNote.content : '')
+    const [validationErrors, setValidationErrors] = useState(null)
 
-    useEffect(()=>{
+    useEffect(() => {
+        let errors = []
+        if (!thisNote || !title) return;
+        if (title.length < 3 || title.length > 30) errors.push('Title must be between 3-30 characters!')
+        if (content.length < 2) errors.push('You need more than one character to save this note!')
+        if (errors.length > 0) setValidationErrors(errors)
+        if (errors.length === 0) setValidationErrors(null)
+    }, [title, content])
+
+    useEffect(() => {
         setTitle(thisNote.title);
         setContent(thisNote.content);
         setViewNote(true);
         setEditNote(false);
     }, [thisNote])
 
-    useEffect(()=>{
-        if(!editNote) return;
+    useEffect(() => {
+        if (!editNote) return;
         setViewNote(false)
     }, [editNote])
 
-    useEffect(()=>{
-        if(!viewNote) return;
+    useEffect(() => {
+        if (!viewNote) return;
         setEditNote(false)
     }, [viewNote])
 
@@ -47,52 +57,60 @@ function NoteView() {
         }
 
         dispatch(updateNote(id, updatedNote))
-        .then(()=>dispatch(getAllNotebooks(userId)))
+            .then(() => dispatch(getAllNotebooks(userId)))
 
         setViewNote(true)
     }
 
     return (
         <div className="note-view">
+
+            {validationErrors && <ul>
+            {validationErrors.map(error => <li className="val-error" key={error.length}>{error}</li>)}
+            </ul>}
+
             {(thisNote.id) ?
-            <div className="note-box">
+                <div className="note-box">
 
-                {thisNote && viewNote && <h3
-                className="note-title tooltip"
-                onClick={()=>setEditNote(true)}
-                data-text='Click to edit!'
-                >{thisNote.title}</h3>}
+                    {thisNote && viewNote && <h3
+                        className="note-title tooltip"
+                        onClick={() => setEditNote(true)}
+                        data-text='Click to edit!'
+                    >{thisNote.title}</h3>}
 
-                {thisNote && editNote && <input
-                className="input-title"
-                placeholder={thisNote.title}
-                value={title}
-                onChange={(e)=>setTitle(e.target.value)}
-                />}
+                    {thisNote && editNote && <input
+                        className="input-title"
+                        placeholder={thisNote.title}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />}
 
-                {thisNote && viewNote && <p
-                className="note-content tooltip"
-                onClick={()=>setEditNote(true)}
-                data-text='Click to edit!'
-                >{thisNote.content}</p>}
+                    {thisNote && viewNote && <p
+                        className="note-content tooltip"
+                        onClick={() => setEditNote(true)}
+                        data-text='Click to edit!'
+                    >{thisNote.content}</p>}
 
-                {thisNote && editNote && <input
-                className="input-content"
-                placeholder={thisNote.content}
-                value={content}
-                onChange={(e)=>setContent(e.target.value)}
-                />}
+                    {thisNote && editNote && <textarea
+                        className="input-content"
+                        placeholder={thisNote.content}
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}>
+                    </textarea>}
 
-                {thisNote && editNote && <button
-                onClick={()=>cancelEdit()}
-                >Cancel</button>}
+                    {thisNote && editNote && <button
+                        className="cancel-button"
+                        onClick={() => cancelEdit()}
+                    >Cancel</button>}
 
-                {thisNote && editNote && <button
-                onClick={()=>updateThisNote()}
-                >Save</button>}
+                    {thisNote && editNote && <button
+                        disabled={validationErrors}
+                        className="save-button"
+                        onClick={() => updateThisNote()}
+                    >Save</button>}
 
-            </div> :
-            <p className="select-note">Select a note!</p>
+                </div> :
+                <p className="select-note">Select a note!</p>
             }
         </div>
     )

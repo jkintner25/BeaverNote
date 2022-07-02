@@ -11,8 +11,8 @@ function NoteForm() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedNotebook, setSelectedNotebook] = useState(null);
-    const [validationErrors, setValidationErrors] = useState(null)
-    const [showForm, setShowForm] = useState(false)
+    const [validationErrors, setValidationErrors] = useState(null);
+    const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
         if (!userNotebooks[0] || !(selectedNotebook === null)) return;
@@ -67,13 +67,13 @@ function NoteForm() {
                 <form className="note-form" onSubmit={handleSubmit}>
                     <div className="note-form-inner-container">
                         <label>Title</label>
-                        <input type={'text'}
+                        <input className="title-input" type={'text'}
                             value={title}
                             placeholder={'Note Title'}
                             onChange={(e) => setTitle(e.target.value)}
                         ></input>
                         <label>Content</label>
-                        <input type={'text'}
+                        <input className="content-input" type={'text'}
                             value={content}
                             placeholder={'Note Content'}
                             onChange={(e) => setContent(e.target.value)}

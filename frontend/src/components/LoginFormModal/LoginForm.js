@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -10,6 +10,16 @@ function LoginForm() {
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
+    const [validationErrors, setValidationErrors] = useState([])
+
+    useEffect(() => {
+        let valErrs = []
+        if (!credential)
+            valErrs.push('Usernamer/email field cannot be empty.')
+        if (!password)
+            valErrs.push('Password field cannot be empty.')
+        setValidationErrors(valErrs)
+    }, [credential, password])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,6 +43,7 @@ function LoginForm() {
                 {errors.map((error, idx) => (
                     <li key={idx}>{error}</li>
                 ))}
+                {validationErrors && validationErrors.map(err => <li key={err.length}>{err}</li>)}
             </ul>
             <label>
                 Username or Email
@@ -52,7 +63,9 @@ function LoginForm() {
                     required
                 />
             </label>
-            <button type="submit">Log In</button>
+            <button
+            disabled={validationErrors.length > 0}
+            type="submit">Log In</button>
         </form>
     );
 }

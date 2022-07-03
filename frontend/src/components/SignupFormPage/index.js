@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -13,8 +13,20 @@ function SignupFormPage() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState([]);
+    const [validationErrors, setValidationErrors] = useState([])
 
-    if (sessionUser) return <Redirect to="/" />;
+    useEffect(() => {
+        let valErrs = []
+        if (!email)
+            valErrs.push('Email field required.')
+        if (!username)
+            valErrs.push('Username field required.')
+        if (!password)
+            valErrs.push('Password field required.')
+        if (password !== confirmPassword)
+            valErrs.push('Password fields must match.')
+        setValidationErrors(valErrs)
+    }, [email, username, password, confirmPassword])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -34,6 +46,7 @@ function SignupFormPage() {
         <form className="signup-form" onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                {validationErrors && validationErrors.map(err=><li key={err}>{err}</li>)}
             </ul>
             <label>
                 Email
@@ -71,7 +84,9 @@ function SignupFormPage() {
                     required
                 />
             </label>
-            <button type="submit">Sign Up</button>
+            <button
+            disabled={validationErrors.length > 0}
+            type="submit">Sign Up</button>
         </form>
     );
 }

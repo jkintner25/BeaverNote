@@ -17,15 +17,13 @@ function NotebookForm() {
     }
 
     useEffect(() => {
-        if (title.length < 3 || title.length > 30)
+        if (title && (title.length < 3 || title.length > 30)) {
             setValidationError('Title must be between 3-30 characters!')
-        else setValidationError('')
+        } else setValidationError('')
     }, [title])
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (title.length < 3 || title.length > 30) setValidationError('Title must be between 3-30 characters!')
 
         const newNotebook = {
             title: title,
@@ -40,7 +38,7 @@ function NotebookForm() {
         <div className="create-notebook-div">
             <button onClick={() => setShowForm(!showForm)}>Create a new notebook!</button>
             {showForm && <>
-                {validationError.length > 0 && <li>{validationError}</li>}
+                {validationError && <li>{validationError}</li>}
                 <form className="notebook-form" onSubmit={handleSubmit}>
                     <div className="form-inner-container">
                         <input type={'text'}

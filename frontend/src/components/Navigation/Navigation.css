@@ -117,6 +117,7 @@ p {
 .profile-dropdown {
     margin-top: 1rem;
     position: absolute;
+    width: 7rem;
     right: 1rem;
     top: 3.4rem;
     text-decoration: none;
@@ -132,7 +133,6 @@ p {
 }
 
 .logout-button {
-    align-self: center;
     background-color: #0b2545;
     background-image: none;
     background-position: 0 90%;

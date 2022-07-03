@@ -12,7 +12,7 @@ function NotebookForm() {
 
     const reset = () => {
         setTitle('');
-        setValidationError([]);
+        setValidationError('');
         setShowForm(false)
     }
 

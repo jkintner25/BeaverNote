@@ -121,7 +121,11 @@ const notebooksReducer = (state = initialState, action) => {
                 return newState
             }, {})
         case UPDATE_NOTEBOOK:
-            return { ...state, [action.notebook.id]: action.notebook };
+            newState = { ...state }
+            let notesTransfer = newState[action.notebook.id].notes
+            newState[action.notebook.id] = action.notebook
+            newState[action.notebook.id].notes = notesTransfer
+            return newState;
         case REMOVE_NOTEBOOK:
             newState = { ...state };
             delete newState[action.notebook.id];

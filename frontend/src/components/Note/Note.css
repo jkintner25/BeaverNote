@@ -85,13 +85,13 @@ select.notebook-selector option {
     position: relative;
     float: right;
     top: 1.4rem;
-    right: 1.5rem;
+    right: 1.8rem;
     width: 90%;
     height: 100%;
     background-color: #8da9c4;
     border: solid 5px #eef4ed;
     border-radius: 15px 225px 15px 255px/255px 10px 255px 10px;
-    z-index: -10;
+    z-index: 10;
 }
 
 p.select-note {

@@ -26,6 +26,8 @@
 .row {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .col-one {
@@ -36,10 +38,10 @@
 }
 
 .col-two {
-    position: absolute;
+    position: relative;
     width: 48%;
-    height: 60%;
-    right: 1.4rem;
+    height: 100%;
+    height: 25rem;
 }
 
 li,

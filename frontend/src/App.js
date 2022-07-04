@@ -15,8 +15,10 @@ function App() {
 
   return (
     <>
-    {sessionUser ? <LoggedIn sessionUser={sessionUser} /> : <LoggedOut />}
-      <Footer />
+      <div className="main-content">
+        {sessionUser ? <LoggedIn sessionUser={sessionUser} /> : <LoggedOut />}
+        <Footer />
+      </div>
     </>
   );
 }

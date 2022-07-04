@@ -66,7 +66,7 @@ function NoteView() {
         <div className="note-view">
 
             {validationErrors && <ul>
-            {validationErrors.map(error => <li className="val-error" key={error.length}>{error}</li>)}
+                {validationErrors.map(error => <li className="val-error" key={error.length}>{error}</li>)}
             </ul>}
 
             {(thisNote.id) ?
@@ -110,7 +110,9 @@ function NoteView() {
                     >Save</button>}
 
                 </div> :
-                <p className="select-note">Select a note!</p>
+                <div className="select-note-box">
+                    <p className="select-note">Select a note!</p>
+                </div>
             }
         </div>
     )

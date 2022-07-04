@@ -17,6 +17,31 @@
     font-family: 'Inconsolata', monospace;
 }
 
+.main-content {
+    overflow: scroll;
+    height: 100%;
+    padding-bottom: 2rem;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col-one {
+    position: relative;
+    width: 48%;
+    height: auto;
+    left: .2rem;
+}
+
+.col-two {
+    position: absolute;
+    width: 48%;
+    height: 60%;
+    right: 1.4rem;
+}
+
 li,
 p,
 h3 {

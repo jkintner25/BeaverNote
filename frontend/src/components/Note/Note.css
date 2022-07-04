@@ -6,6 +6,10 @@ p {
     position: relative;
 }
 
+.form-inner-container input {
+    width: 73%;
+}
+
 .create-note-div {
     position: relative;
     left: 3rem;
@@ -18,14 +22,14 @@ button.create-note-button {
 }
 
 .note-form input {
-    width: 10.4rem;
+    width: 78%;
     margin: .5rem 0;
     margin-left: .3rem;
 }
 
 .notebook-selector {
     margin: .3rem;
-    width: 10rem;
+    width: 78%;
     margin-bottom: .8rem;
 }
 
@@ -50,7 +54,7 @@ button.create-note-button {
 }
 
 .content-input {
-    width: 30%;
+    width: 79%;
     height: 6rem;
     max-height: 12rem;
     margin: 2% 0;
@@ -63,7 +67,7 @@ button.create-note-button {
 }
 
 input.title-input {
-    width: 28.5%;
+    width: 73%;
 }
 
 select.notebook-selector {
@@ -78,20 +82,28 @@ select.notebook-selector option {
 }
 
 .note-view {
-    position: absolute;
-    top: 5.7rem;
-    right: 1.9rem;
-    width: 50%;
-    height: 60%;
+    position: relative;
+    float: right;
+    top: 1.4rem;
+    right: 1.5rem;
+    width: 90%;
+    height: 100%;
     background-color: #8da9c4;
     border: solid 5px #eef4ed;
     border-radius: 15px 225px 15px 255px/255px 10px 255px 10px;
+    z-index: -10;
 }
 
-.select-note {
-    position: absolute;
-    left: 6.7rem;
-    top: 3rem;
+p.select-note {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.select-note-box {
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .note-box {

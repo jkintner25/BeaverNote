@@ -14,10 +14,16 @@ function LoggedIn({ sessionUser }) {
             <LoggedInNav sessionUser={sessionUser} />
             <Switch>
                 <Route exact path="/">
-                    <Sidebar />
-                    <NotebookForm />
-                    <NoteForm />
-                    <NoteView />
+                    <div className="row">
+                    <div className="col-one">
+                        <Sidebar />
+                        <NotebookForm />
+                        <NoteForm />
+                    </div>
+                    <div className="col-two">
+                        <NoteView />
+                    </div>
+                    </div>
                 </Route>
                 <Route>
                     <NotFoundPage />

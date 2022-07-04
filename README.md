@@ -18,6 +18,8 @@ This project was written in JavaScript and built using the PERN stack:
 * React
 * Node.js
 
+Additional languages include HTML & CSS.
+
 ------
 
 ## Downloading Beavernote

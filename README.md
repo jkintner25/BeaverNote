@@ -47,3 +47,6 @@ Running the command `npm start` from the backend and frontend folders will
 
 ## Screenshots
 
+![landing-page](https://user-images.githubusercontent.com/95717139/177223903-7b93aca3-60b5-49bd-902a-fcdf0a168185.PNG)
+![feature-view](https://user-images.githubusercontent.com/95717139/177223917-eed63260-4e30-443d-b265-30a88db258cd.PNG)
+![edit-view](https://user-images.githubusercontent.com/95717139/177223923-7cb61d5a-4f1f-4e8c-991d-c3d745240048.PNG)

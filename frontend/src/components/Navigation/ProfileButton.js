@@ -33,8 +33,8 @@ function ProfileButton({ user }) {
         e.preventDefault();
         dispatch(clearState());
         dispatch(clearNoteState());
-        dispatch(sessionActions.logout());
-        history.push('/')
+        dispatch(sessionActions.logout())
+        .then(()=>history.push('/'))
     };
 
     return (

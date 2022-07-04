@@ -73,15 +73,14 @@ input {
     margin-right: 1rem;
     border: none;
     appearance: none;
-    background: #8da9c4;
+    background: #eef4ed;
     padding: 6px;
     border-radius: 5px;
     outline: none;
 }
 
 textarea {
-    background: #8da9c4;
-    border: solid #0b2545;
+    background: #eef4ed;
 }
 
 label {

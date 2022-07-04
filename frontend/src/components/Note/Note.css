@@ -54,7 +54,7 @@ button.create-note-button {
     height: 6rem;
     max-height: 20rem;
     margin: 2% 0;
-    margin-left: 1.5%;
+    margin-left: 0;
     font-size: 14px;
     border: none;
     resize: none;

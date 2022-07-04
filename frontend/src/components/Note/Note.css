@@ -146,7 +146,7 @@ p.note-content {
 }
 
 input.input-title {
-    width: 100%;
+    width: 94.4%;
     height: 5%;
     margin-top: 1.8rem;
     margin-left: 0;
@@ -160,10 +160,9 @@ input.input-title {
     height: 70%;
     border: none;
     appearance: none;
-    background: #eef4ed;
     padding: 6px;
     border-radius: 5px;
     outline: none;
-    background: #8da9c4;
+    background: #eef4ed;
     font-size: 16px;
 }

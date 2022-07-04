@@ -34,12 +34,15 @@ function ProfileButton({ user }) {
         dispatch(clearState());
         dispatch(clearNoteState());
         dispatch(sessionActions.logout())
-        .then(()=>history.push('/'))
+            .then(() => history.push('/'))
     };
 
     return (
         <>
+
+
             <div className="profile-button" onClick={openMenu}>
+                <p className="profile-menu-text">Profile Menu</p>
                 <Otter className='otter' />
             </div>
             {showMenu && (

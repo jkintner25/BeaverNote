@@ -52,7 +52,7 @@ button.create-note-button {
 .content-input {
     width: 30%;
     height: 6rem;
-    max-height: 20rem;
+    max-height: 12rem;
     margin: 2% 0;
     margin-left: 0;
     font-size: 14px;

@@ -23,6 +23,7 @@ function LoginForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setValidationErrors([])
         setErrors([]);
         dispatch(sessionActions.login({ credential, password })).then(
             (data) => {

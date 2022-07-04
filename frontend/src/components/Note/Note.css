@@ -49,6 +49,34 @@ button.create-note-button {
     list-style: none;
 }
 
+.content-input {
+    width: 30%;
+    height: 6rem;
+    max-height: 20rem;
+    margin: 2% 0;
+    margin-left: 1.5%;
+    font-size: 14px;
+    border: none;
+    resize: none;
+    overflow: auto;
+    outline: none;
+}
+
+input.title-input {
+    width: 28.5%;
+}
+
+select.notebook-selector {
+    background: #8da9c4;
+    color: white;
+    outline: none;
+    border: none;
+}
+
+select.notebook-selector option {
+    background-color: #8da9c4;
+}
+
 .note-view {
     position: absolute;
     top: 5.7rem;
@@ -75,8 +103,10 @@ button.create-note-button {
     cursor: text;
 }
 
-.note-content {
+p.note-content {
     cursor: text;
+    overflow: visible;
+    overflow-wrap: break-word;
 }
 
 .tooltip {
@@ -115,10 +145,11 @@ button.create-note-button {
     color: #eef4ed;
 }
 
-.input-title {
-    width: 60%;
+input.input-title {
+    width: 100%;
     height: 5%;
     margin-top: 1.8rem;
+    margin-left: 0;
     font-size: 26px;
 }
 
@@ -133,4 +164,6 @@ button.create-note-button {
     padding: 6px;
     border-radius: 5px;
     outline: none;
+    background: #8da9c4;
+    font-size: 16px;
 }

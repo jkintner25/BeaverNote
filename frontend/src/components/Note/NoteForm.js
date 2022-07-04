@@ -73,11 +73,11 @@ function NoteForm() {
                             onChange={(e) => setTitle(e.target.value)}
                         ></input>
                         <label>Content</label>
-                        <input className="content-input" type={'text'}
+                        <textarea className="content-input" type={'text'}
                             value={content}
                             placeholder={'Note Content'}
                             onChange={(e) => setContent(e.target.value)}
-                        ></input>
+                        ></textarea>
                         <label>Notebooks:</label>
                         <select className="notebook-selector"
                             onChange={(e) => setSelectedNotebook(e.target.value)}>

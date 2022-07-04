@@ -127,9 +127,13 @@ p {
     border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
-.dropdown-li {
+p.dropdown-li {
     margin: .2rem;
     cursor: default;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .logout-button {

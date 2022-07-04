@@ -31,6 +31,7 @@ function SignupFormPage() {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
+            setValidationErrors([])
             setErrors([]);
             dispatch(sessionActions.signup({ email, username, password }))
                 .then(history.push('/'))

@@ -15,14 +15,14 @@ function LoggedIn({ sessionUser }) {
             <Switch>
                 <Route exact path="/">
                     <div className="row">
-                    <div className="col-one">
-                        <Sidebar />
-                        <NotebookForm />
-                        <NoteForm />
-                    </div>
-                    <div className="col-two">
-                        <NoteView />
-                    </div>
+                        <div className="col-one">
+                            <Sidebar />
+                            <NotebookForm />
+                            <NoteForm />
+                        </div>
+                        <div className="col-two">
+                            <NoteView />
+                        </div>
                     </div>
                 </Route>
                 <Route>

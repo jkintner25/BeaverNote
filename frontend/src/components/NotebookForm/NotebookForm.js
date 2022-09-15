@@ -38,9 +38,10 @@ function NotebookForm() {
         <div className="create-notebook-div">
             <button onClick={() => setShowForm(!showForm)}>Create a new notebook!</button>
             {showForm && <>
-                {validationError && <li>{validationError}</li>}
                 <form className="notebook-form" onSubmit={handleSubmit}>
+                {validationError && <li>{validationError}</li>}
                     <div className="form-inner-container">
+                        <label>Title*</label>
                         <input type={'text'}
                             value={title}
                             placeholder={'Notebook Title'}

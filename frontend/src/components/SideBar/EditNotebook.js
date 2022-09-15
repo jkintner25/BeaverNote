@@ -45,7 +45,7 @@ function EditNotebook({ notebook, userId }) {
     return (
         <>
             <div className="notebook-title-div">
-                {!editMode && <button onClick={() => toggleMode()}>Edit</button>}
+                {!editMode && <button className='sidebar-buttons' onClick={() => toggleMode()}>Edit</button>}
                 {!editMode > 0 &&
                     <li className="notebook-title-li">
                         {notebook.title}
@@ -53,13 +53,13 @@ function EditNotebook({ notebook, userId }) {
                 }
                 {editMode &&
                     <div className='edit-notebook-div'>
-                        {validationErrors && <div>{validationErrors}</div>}
+                        {validationErrors && <div className='sidebar-errors'>{validationErrors}</div>}
+                        <button className='sidebar-buttons' onClick={() => toggleMode()}>Cancel</button>
                         <input className='edit-notebook-input'
                             value={title}
                             onChange={(e) => setTitle(e.target.value)} />
-                        <button onClick={() => toggleMode()}>Cancel</button>
-                        <button disabled={validationErrors} onClick={() => saveNotebookTitle()}>Save</button>
-                        <button onClick={() => deleteThisNotebook()}>Delete</button>
+                        <button className='sidebar-buttons' disabled={validationErrors} onClick={() => saveNotebookTitle()}>Save</button>
+                        <button className='sidebar-buttons' onClick={() => deleteThisNotebook()}>Delete</button>
                     </div>}
             </div>
         </>

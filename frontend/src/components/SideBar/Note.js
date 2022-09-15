@@ -25,8 +25,8 @@ function Note({ note, showDeleteBtn }) {
 
     return (
         <div className="sidebar-note-div">
-            {showDeleteBtn && <button className="delete-note" onClick={()=>deleteThisNote(note.id)}>Delete</button>}
             <li onClick={()=>showNote(note)}>{note.title}</li>
+            {showDeleteBtn && <button className="delete-note" onClick={()=>deleteThisNote(note.id)}>Delete</button>}
         </div>
     );
 };

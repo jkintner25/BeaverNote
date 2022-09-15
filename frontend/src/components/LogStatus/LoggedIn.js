@@ -1,10 +1,8 @@
 import LoggedInNav from "../Navigation/LoggedInNav";
 import { Switch, Route } from 'react-router-dom';
 import Sidebar from "../SideBar/Sidebar";
-import NotebookForm from "../NotebookForm/NotebookForm";
-import NoteForm from "../Note/NoteForm";
-import NoteView from "../Note/NoteView";
 import NotFoundPage from "../404Page/NotFoundPage";
+import QuillComponent from "../Quill/Quill";
 
 
 function LoggedIn({ sessionUser }) {
@@ -17,11 +15,10 @@ function LoggedIn({ sessionUser }) {
                     <div className="row">
                         <div className="col-one">
                             <Sidebar />
-                            <NotebookForm />
-                            <NoteForm />
                         </div>
                         <div className="col-two">
-                            <NoteView />
+                            {/* <NoteView /> */}
+                            <QuillComponent />
                         </div>
                     </div>
                 </Route>

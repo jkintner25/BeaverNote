@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllNotebooks } from '../../store/notebooks';
 import Notebook from './Notebook';
 import EditNotebook from './EditNotebook';
+import './sidebar.css'
 
 function Sidebar() {
     const dispatch = useDispatch();
@@ -28,8 +29,8 @@ function Sidebar() {
                 ))}
             </ul>
             <div>
-            {notebooks.length > 0 && <button onClick={() => setEditMode(!editMode)}>Edit Notebooks</button>}
-            {notebooks.length > 0 && <button onClick={() => setShowDeleteBtn(!showDeleteBtn)}>Delete Notes</button>}
+            {notebooks.length > 0 && <button className='sidebar-buttons' onClick={() => setEditMode(!editMode)}>Edit Notebooks</button>}
+            {notebooks.length > 0 && <button className='sidebar-buttons' onClick={() => setShowDeleteBtn(!showDeleteBtn)}>Delete Notes</button>}
             </div>
         </div>
     );

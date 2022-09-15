@@ -1,7 +1,5 @@
 .create-notebook-div {
     position: relative;
-    left: 3rem;
-    top: 2rem;
 }
 
 .create-notebook-div button {
@@ -20,12 +18,17 @@
 
 form.notebook-form {
     margin-bottom: 0;
+    position: absolute;
+    z-index: 1000;
+    background-color: #8da9c4;
+    border: solid 5px #eef4ed;
 }
 
 .create-notebook-div li {
-    margin-left: 1.5%;
     font-size: 14px;
-    max-width: 30%;
+    width: 100%;
+    margin: 0 0 12px 3px;
     word-wrap: break-word;
     list-style: none;
+    color: yellow;
 }

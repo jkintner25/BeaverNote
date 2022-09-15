@@ -28,6 +28,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    margin-top: 40px;
 }
 
 .col-one {
@@ -63,7 +64,6 @@ button {
     background-position: 0 90%;
     background-repeat: repeat no-repeat;
     background-size: 4px 3px;
-    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
     border-style: solid;
     border-width: 1px;
     box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
@@ -78,10 +78,6 @@ button {
     padding: .1rem .5rem;
     text-decoration: none;
     transition: all 235ms ease-in-out;
-    border-bottom-left-radius: 15px 255px;
-    border-bottom-right-radius: 225px 15px;
-    border-top-left-radius: 255px 15px;
-    border-top-right-radius: 15px 225px;
     user-select: none;
     touch-action: manipulation;
 }

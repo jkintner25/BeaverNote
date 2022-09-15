@@ -11,7 +11,7 @@ function NoteForm() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [selectedNotebook, setSelectedNotebook] = useState(null);
-    const [validationErrors, setValidationErrors] = useState(null);
+    const [validationErrors, setValidationErrors] = useState([]);
     const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
@@ -35,11 +35,10 @@ function NoteForm() {
     useEffect(() => {
         let errors = []
         if (title && (title.length < 3 || title.length > 30)) errors.push('Title must be between 3-30 characters!')
-        if (content.length === 1) errors.push('You need more than one character to save this note!')
         if (!selectedNotebook) errors.push('Select a notebook!')
         if (errors.length > 0)setValidationErrors(errors)
-        if (errors.length === 0) setValidationErrors(null)
-    }, [title, content, selectedNotebook])
+        if (errors.length === 0) setValidationErrors([])
+    }, [title, selectedNotebook])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -61,10 +60,10 @@ function NoteForm() {
         <div className="create-note-div">
             <button className="create-note-button" onClick={() => setShowForm(!showForm)}>Create a new note!</button>
             {showForm && <>
-                {validationErrors && validationErrors.map(error => {
-                    return <li key={error}>{error}</li>
-                })}
                 <form className="note-form" onSubmit={handleSubmit}>
+                {validationErrors && validationErrors.map(error => {
+                    return <li key={error} className='error'>{error}</li>
+                })}
                     <div className="note-form-inner-container">
                         <label>Title</label>
                         <input className="title-input" type={'text'}
@@ -72,12 +71,6 @@ function NoteForm() {
                             placeholder={'Note Title'}
                             onChange={(e) => setTitle(e.target.value)}
                         ></input>
-                        <label>Content</label>
-                        <textarea className="content-input" type={'text'}
-                            value={content}
-                            placeholder={'Note Content'}
-                            onChange={(e) => setContent(e.target.value)}
-                        ></textarea>
                         <label>Notebooks:</label>
                         <select className="notebook-selector"
                             onChange={(e) => setSelectedNotebook(e.target.value)}>
@@ -91,7 +84,7 @@ function NoteForm() {
                         </select>
                     </div>
                     <button type={'submit'}
-                        disabled={!title || !content}
+                        disabled={!title || validationErrors.length}
                     >Save this note</button>
                 </form>
             </>}

@@ -3,7 +3,11 @@ p {
 }
 
 .note-form {
-    position: relative;
+    margin-bottom: 0;
+    position: absolute;
+    z-index: 1000;
+    background-color: #8da9c4;
+    border: solid 5px #eef4ed;
 }
 
 .form-inner-container input {
@@ -12,8 +16,7 @@ p {
 
 .create-note-div {
     position: relative;
-    left: 3rem;
-    top: 2rem;
+    margin: 0 20px;
 }
 
 button.create-note-button {
@@ -22,7 +25,7 @@ button.create-note-button {
 }
 
 .note-form input {
-    width: 78%;
+    width: 85%;
     margin: .5rem 0;
     margin-left: .3rem;
 }
@@ -45,12 +48,12 @@ button.create-note-button {
 }
 
 .create-note-div li {
-    margin: 2% 0;
-    margin-left: 1.5%;
     font-size: 14px;
-    max-width: 30%;
+    width: 100%;
+    margin: 0 0 12px 3px;
     word-wrap: break-word;
     list-style: none;
+    color: yellow;
 }
 
 .content-input {
@@ -90,7 +93,6 @@ select.notebook-selector option {
     height: 100%;
     background-color: #8da9c4;
     border: solid 5px #eef4ed;
-    border-radius: 15px 225px 15px 255px/255px 10px 255px 10px;
     z-index: 10;
 }
 
@@ -178,4 +180,23 @@ input.input-title {
     outline: none;
     background: #eef4ed;
     font-size: 16px;
+}
+
+.sidebar-note-div {
+    margin: -8px 0 16px 0;
+    align-items: center;
+    height: 26px;
+}
+
+.sidebar-note-div li {
+    cursor: pointer;
+}
+
+button.delete-note {
+    margin: 0 0 0 26px;
+    padding: 0;
+    font-size: 12px;
+    padding: 0 10px;
+    width: auto;
+    height: auto;
 }

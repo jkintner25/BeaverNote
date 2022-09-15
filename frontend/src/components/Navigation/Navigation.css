@@ -7,7 +7,6 @@
     right: .1rem;
     background-color: #8da9c4;
     border: solid 5px #eef4ed;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     padding: 1rem;
     justify-content: space-between;
     margin: 0px 2rem;
@@ -50,7 +49,6 @@
     padding: 1rem 3rem;
     width: auto;
     border: solid 5px #eef4ed;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
     margin: 0px 2rem;
     justify-content: space-around;
     align-items: center;
@@ -126,7 +124,6 @@ p {
     z-index: 1000;
     background-color: #8da9c4;
     border: solid 5px #eef4ed;
-    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
 p.dropdown-li {
@@ -149,7 +146,6 @@ p.profile-menu-text {
     background-position: 0 90%;
     background-repeat: repeat no-repeat;
     background-size: 4px 3px;
-    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
     border-style: solid;
     border-width: 1px;
     box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
@@ -164,10 +160,6 @@ p.profile-menu-text {
     padding: .1rem .5rem;
     text-decoration: none;
     transition: all 235ms ease-in-out;
-    border-bottom-left-radius: 15px 255px;
-    border-bottom-right-radius: 225px 15px;
-    border-top-left-radius: 255px 15px;
-    border-top-right-radius: 15px 225px;
     user-select: none;
     touch-action: manipulation;
 }
@@ -179,4 +171,8 @@ p.profile-menu-text {
 
 .logout-button:focus {
     box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+.right {
+    display: flex;
 }

@@ -200,3 +200,12 @@ button.delete-note {
     width: auto;
     height: auto;
 }
+
+.note-body {
+    max-width: 700px;
+    min-width: fit-content;
+    min-height: 540px;
+    padding: 50px;
+    background-color: #8da9c4;
+    border: solid 5px #eef4ed;
+}

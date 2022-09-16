@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Sidebar from "../SideBar/Sidebar";
 import NotFoundPage from "../404Page/NotFoundPage";
 import QuillComponent from "../Quill/Quill";
+import NotePanel from "../Note/NotePanel";
 
 
 function LoggedIn({ sessionUser }) {
@@ -18,7 +19,8 @@ function LoggedIn({ sessionUser }) {
                         </div>
                         <div className="col-two">
                             {/* <NoteView /> */}
-                            <QuillComponent />
+                            {/* <QuillComponent /> */}
+                            <NotePanel />
                         </div>
                     </div>
                 </Route>

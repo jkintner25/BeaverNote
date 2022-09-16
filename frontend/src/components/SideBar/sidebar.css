@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 86%;
+    width: 280px;
+    min-height: 700px;
     left: 2rem;
     background-color: #8da9c4;
     border: solid 5px #eef4ed;
@@ -59,7 +60,8 @@ ul {
 
 .notebook-title-div {
     margin: 0 0 10px 0;
-    height: 20px;
+    min-height: 20px;
+    align-items: center;
 }
 
 .notebook-title-li,
@@ -82,10 +84,13 @@ ul {
 
 .edit-notebook-input {
     width: 80%;
+    margin: 0 0 2px 14px;
 }
 
 .edit-notebook-div {
+    position: relative;
     display: flex;
+    flex-direction: column;
 }
 
 .sidebar-errors {

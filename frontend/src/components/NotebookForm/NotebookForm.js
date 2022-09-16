@@ -49,7 +49,7 @@ function NotebookForm() {
                         ></input>
                     </div>
                     <button className="create-notebook-save-button" type={'submit'}
-                        disabled={validationError.length > 0}
+                        disabled={validationError.length > 0 || !title}
                     >Save</button>
                 </form>
             </>}

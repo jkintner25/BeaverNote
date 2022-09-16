@@ -53,13 +53,17 @@ function EditNotebook({ notebook, userId }) {
                 }
                 {editMode &&
                     <div className='edit-notebook-div'>
+                        <div>
                         {validationErrors && <div className='sidebar-errors'>{validationErrors}</div>}
-                        <button className='sidebar-buttons' onClick={() => toggleMode()}>Cancel</button>
                         <input className='edit-notebook-input'
                             value={title}
                             onChange={(e) => setTitle(e.target.value)} />
+                        </div>
+                        <div>
+                        <button className='sidebar-buttons' onClick={() => toggleMode()}>Cancel</button>
                         <button className='sidebar-buttons' disabled={validationErrors} onClick={() => saveNotebookTitle()}>Save</button>
                         <button className='sidebar-buttons' onClick={() => deleteThisNotebook()}>Delete</button>
+                        </div>
                     </div>}
             </div>
         </>

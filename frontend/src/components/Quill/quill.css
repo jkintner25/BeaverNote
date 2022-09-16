@@ -1,5 +1,7 @@
 .quill-container {
-    width: 90%;
+    margin: 0;
+    width: 740px;
+    height: 612px;
     z-index: 999;
     background-color: #8da9c4;
     border: solid 5px #eef4ed;
@@ -8,4 +10,21 @@
 .ql-toolbar {
     height: 40px;
     background-color: #eef4ed;
+}
+
+.ql-editor {
+    height: auto;
+}
+
+.quill {
+    height: 93.5%;
+}
+
+.edit-title-input {
+    font-size: 34px;
+    margin: 14.6px 0 14.2 0;
+}
+
+.errors {
+    color: yellow;
 }

@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/jkintner25/BeaverNote/issues"
   },
-  "homepage": "https://github.com/jkintner25/BeaverNote#readme"
+  "homepage": "https://github.com/jkintner25/BeaverNote#readme",
+  "dependencies": {
+    "react-quill": "^2.0.0"
+  }
 }

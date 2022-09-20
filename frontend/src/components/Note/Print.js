@@ -61,7 +61,7 @@ const PrintNote = () => {
     }, []);
 
     return (
-        <div>
+        <>
             <NotePanel ref={componentRef} text={text} />
             <ReactToPrint
                 content={reactToPrintContent}
@@ -73,7 +73,7 @@ const PrintNote = () => {
                 trigger={reactToPrintTrigger}
             />
             {loading && <p className="indicator">Loading...</p>}
-        </div>
+        </>
     );
 };
 

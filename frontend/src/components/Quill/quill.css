@@ -1,11 +1,13 @@
-.quill-container {
+.ql-container,
+.ql-snow {
     margin: 0;
-    width: 740px;
-    height: 612px;
+    width: 100%;
+    height: 930px;
     z-index: 999;
-    background-color: #8da9c4;
+    background-color: white;
     border: solid 5px #eef4ed;
 }
+
 
 .ql-toolbar {
     height: 40px;
@@ -16,8 +18,11 @@
     height: auto;
 }
 
-.quill {
-    height: 93.5%;
+.ql-editor p,
+.ql-editor h1,
+.ql-editor h2,
+.ql-editor h3 {
+    color: black;
 }
 
 .edit-title-input {
@@ -27,4 +32,21 @@
 
 .errors {
     color: yellow;
+}
+
+.outer-div {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+.quill {
+    width: 800px;
+    height: auto;
+}
+
+.editor-buttons {
+    /* margin-top: 8px; */
+    z-index: 10000;
 }

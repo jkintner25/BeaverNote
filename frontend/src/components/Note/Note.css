@@ -19,11 +19,6 @@ p {
     margin: 0 20px;
 }
 
-button.create-note-button {
-    margin: 0;
-    margin-bottom: .5rem;
-}
-
 .note-form input {
     width: 85%;
     margin: .5rem 0;
@@ -215,10 +210,26 @@ button.delete-note {
 }
 
 .note-body {
-    max-width: 700px;
-    min-width: fit-content;
-    min-height: 540px;
+    width: 690px;
+    height: 930px;
     padding: 50px;
-    background-color: #8da9c4;
+    background-color: white;
     border: solid 5px #eef4ed;
+    color: black;
+}
+
+.note-body p,
+.note-body h1,
+.note-body h2,
+.note-body h3 {
+    color: black;
+}
+
+.outer-div {
+    height: auto;
+    width: 690px;
+}
+
+button {
+    margin: 10px 0 2px 0;
 }

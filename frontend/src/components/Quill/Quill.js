@@ -60,11 +60,13 @@ function QuillComponent({ note, setEdit }) {
     }
 
     return (
-        <>
+        <div className="outer-div">
             {!editTitle ?
                 <>
                     <h1>{note.title}</h1>
+                    <div>
                     <button type="button" onClick={() => setEditTitle(true)}>Edit Title</button>
+                    </div>
                 </>
                 :
                 <>
@@ -76,16 +78,16 @@ function QuillComponent({ note, setEdit }) {
                     <button type="button" onClick={() => setEditTitle(false)}>Cancel</button>
                 </>
             }
-            <div className="quill-container">
                 <ReactQuill
                     placeholder="Write a note!"
                     onChange={handleBody}
                     value={body}
                 />
+            <div>
+            <button type='button' className="editor-buttons" onClick={handleSubmit}>Save</button>
+            <button type='button' className="editor-buttons" onClick={() => setEdit(false)}>Cancel</button>
             </div>
-            <button type='button' onClick={handleSubmit}>Save</button>
-            <button type='button' onClick={() => setEdit(false)}>Cancel</button>
-        </>
+        </div>
     );
 };
 

@@ -65,13 +65,13 @@ function NoteForm() {
                     return <li key={error} className='error'>{error}</li>
                 })}
                     <div className="note-form-inner-container">
-                        <label>Title</label>
+                        <label>Title*</label>
                         <input className="title-input" type={'text'}
                             value={title}
                             placeholder={'Note Title'}
                             onChange={(e) => setTitle(e.target.value)}
                         ></input>
-                        <label>Notebooks:</label>
+                        <label>Notebook*</label>
                         <select className="notebook-selector"
                             onChange={(e) => setSelectedNotebook(e.target.value)}>
                             {userNotebooks && userNotebooks.map(notebook => {

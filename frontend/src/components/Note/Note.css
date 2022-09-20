@@ -31,9 +31,12 @@ button.create-note-button {
 }
 
 .notebook-selector {
+    position: relative;
+    top: 10px;
     margin: .3rem;
     width: 78%;
-    margin-bottom: .8rem;
+    margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .note-form-inner-container {
@@ -42,9 +45,19 @@ button.create-note-button {
 }
 
 .note-form-inner-container label {
-    color: #eef4ed;
-    margin: 0;
-    margin-left: .5rem;
+    position: relative;
+    top: 12px;
+    color: white;
+    margin: 0 0 0 8px;
+}
+
+.note-form-inner-container input {
+    position: relative;
+    top: 12px;
+}
+
+.note-form button {
+    margin: 0 0 8px 6px;
 }
 
 .create-note-div li {

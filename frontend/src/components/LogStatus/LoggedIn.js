@@ -2,11 +2,12 @@ import LoggedInNav from "../Navigation/LoggedInNav";
 import { Switch, Route } from 'react-router-dom';
 import Sidebar from "../SideBar/Sidebar";
 import NotFoundPage from "../404Page/NotFoundPage";
-import QuillComponent from "../Quill/Quill";
-import NotePanel from "../Note/NotePanel";
+import { useSelector } from "react-redux";
+import PrintNote from "../Note/Print";
 
 
 function LoggedIn({ sessionUser }) {
+    const thisNote = useSelector(state => state.notes)
 
     return (
         <>
@@ -18,9 +19,7 @@ function LoggedIn({ sessionUser }) {
                             <Sidebar />
                         </div>
                         <div className="col-two">
-                            {/* <NoteView /> */}
-                            {/* <QuillComponent /> */}
-                            <NotePanel />
+                            {Object.entries(thisNote).length ? <PrintNote /> : <p>Select a note!</p>}
                         </div>
                     </div>
                 </Route>

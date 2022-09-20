@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import QuillComponent from "../Quill/Quill";
+import PrintNote from "./Print";
 
-function NotePanel() {
+const NotePanel = forwardRef((props, ref) => {
     const thisNote = useSelector(state => state.notes && state.notes)
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
@@ -20,8 +21,6 @@ function NotePanel() {
         setEdit(false)
     }, [thisNote])
 
-    console.log(content)
-
     return (
         <>
             {!edit ?
@@ -29,7 +28,7 @@ function NotePanel() {
                     {Object.entries(thisNote).length ?
                         <>
                             <h1>{title}</h1>
-                            <div className="note-body" dangerouslySetInnerHTML={{ __html: content }}></div>
+                            <div ref={ref} className="note-body" dangerouslySetInnerHTML={{ __html: content }}></div>
                             <button type="button" onClick={() => setEdit(true)}>Edit</button>
                         </>
                         :
@@ -42,6 +41,6 @@ function NotePanel() {
             }
         </>
     );
-};
+});
 
 export default NotePanel;

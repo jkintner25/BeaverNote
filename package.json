@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/jkintner25/BeaverNote#readme",
   "dependencies": {
-    "react-quill": "^2.0.0"
+    "react-quill": "^2.0.0",
+    "react-to-print": "^2.14.7"
   }
 }

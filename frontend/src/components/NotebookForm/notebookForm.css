@@ -32,3 +32,20 @@ form.notebook-form {
     list-style: none;
     color: yellow;
 }
+
+.form-inner-container {
+    position: relative;
+    height: 70px;
+}
+
+.form-inner-container label {
+    position: relative;
+    top: 12px;
+    color: white;
+    margin-left: 8px;
+}
+
+.form-inner-container input {
+    position: relative;
+    top: 12px;
+}

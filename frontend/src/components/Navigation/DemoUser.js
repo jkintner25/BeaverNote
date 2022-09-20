@@ -3,6 +3,11 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from "../../store/session";
 import './Navigation.css';
+import styled from 'styled-components';
+
+const Demo = styled.p`
+cursor: pointer;
+`
 
 function DemoUser() {
     const dispatch = useDispatch();
@@ -21,7 +26,7 @@ function DemoUser() {
     };
 
     return (
-        <p className='demo-login-button' onClick={demoLogin}>Demo</p>
+        <Demo className='demo-login-button' onClick={demoLogin}>Demo</Demo>
     );
 }
 

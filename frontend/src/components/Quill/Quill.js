@@ -84,8 +84,8 @@ function QuillComponent({ note, setEdit }) {
                     value={body}
                 />
             <div>
-            <button type='button' className="editor-buttons" onClick={handleSubmit}>Save</button>
             <button type='button' className="editor-buttons" onClick={() => setEdit(false)}>Cancel</button>
+            <button type='button' className="editor-buttons" onClick={handleSubmit}>Save</button>
             </div>
         </div>
     );

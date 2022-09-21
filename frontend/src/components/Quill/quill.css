@@ -1,17 +1,26 @@
 .ql-container,
 .ql-snow {
     margin: 0;
-    width: 100%;
-    height: 930px;
+    width: 790px;
+    height: 962px;
     z-index: 999;
     background-color: white;
-    border: solid 5px #eef4ed;
+    padding: 50px;
 }
 
 
-.ql-toolbar {
+div.ql-toolbar.ql-snow {
+    display: flex;
+    flex-direction: row;
     height: 40px;
     background-color: #eef4ed;
+    align-items: center;
+    padding: 2px;
+}
+
+div.ql-toolbar.ql-snow span {
+    height: auto;
+    z-index: 9999;
 }
 
 .ql-editor {

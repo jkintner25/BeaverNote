@@ -54,7 +54,7 @@ const PrintNote = () => {
 
         // Good
         return (
-            <button>
+            <button className='print'>
                 Print
             </button>
         ); // eslint-disable-line max-len

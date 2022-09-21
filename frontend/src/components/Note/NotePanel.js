@@ -29,7 +29,7 @@ const NotePanel = forwardRef((props, ref) => {
                         <>
                             <h1>{title}</h1>
                             <div ref={ref} className="note-body" dangerouslySetInnerHTML={{ __html: content }}></div>
-                            <button type="button" onClick={() => setEdit(true)}>Edit</button>
+                            <button className="edit-note" type="button" onClick={() => setEdit(true)}>Edit</button>
                         </>
                         :
                         <p>Select a note.</p>

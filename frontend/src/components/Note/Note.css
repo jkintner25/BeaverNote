@@ -214,7 +214,7 @@ button.delete-note {
     height: 930px;
     padding: 50px;
     background-color: white;
-    border: solid 5px #eef4ed;
+    /* border: solid 5px #eef4ed; */
     color: black;
 }
 
@@ -230,6 +230,15 @@ button.delete-note {
     width: 690px;
 }
 
-button {
-    margin: 10px 0 2px 0;
+button.editor-buttons {
+    margin: 10px 10px 10px 0;
+}
+
+button.edit-note {
+    margin: 10px 10px 10px 0;
+    width: 60px;
+}
+
+button.print {
+    width: 60px;
 }

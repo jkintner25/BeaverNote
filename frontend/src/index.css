@@ -38,6 +38,9 @@
 }
 
 .col-two {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
     position: relative;
     width: 900px;
     height: 100%;
